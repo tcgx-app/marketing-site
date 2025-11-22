@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { QueryProvider } from './providers'
 
 import '../app/tailwind.css'
 
@@ -21,9 +20,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={inter.className}>
-        <QueryProvider>{children}</QueryProvider>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   )
 }

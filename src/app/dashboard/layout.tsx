@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { DehydratedState, HydrationBoundary } from '@tanstack/react-query'
 
 export const metadata: Metadata = {
   title: {
@@ -13,11 +12,6 @@ interface BuylistLayoutProps {
   children: React.ReactNode
 }
 
-export default async function BuylistLayout(
-  { children }: BuylistLayoutProps,
-  dehydratedState: DehydratedState
-) {
-  return (
-    <HydrationBoundary state={dehydratedState}>{children}</HydrationBoundary>
-  )
+export default async function BuylistLayout({ children }: BuylistLayoutProps) {
+  return <>{children}</>
 }

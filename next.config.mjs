@@ -2,7 +2,7 @@
 const nextConfig = {
   output: 'export',
   // GitHub Pages deploys to a subdirectory based on repo name
-  basePath: '/marketing-site',
+  basePath: process.env.NODE_ENV === 'development' ? '' : '/marketing-site',
   // Ensure CSS is properly handled in static export
   assetPrefix: '/marketing-site',
   trailingSlash: true,
