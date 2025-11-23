@@ -1,8 +1,11 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { ThemeProvider } from 'next-themes'
+
+import { MainNav } from './_components/main-nav'
 
 import '../app/tailwind.css'
 
+import { Inter } from 'next/font/google'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -10,7 +13,7 @@ export const metadata: Metadata = {
     template: '%s | TCGX',
     default: 'TCGX'
   },
-  description: 'TCGX web app'
+  description: 'TCGX'
 }
 
 export default async function RootLayout({
@@ -20,7 +23,15 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <ThemeProvider
+          defaultTheme='system'
+          enableSystem
+          disableTransitionOnChange
+        >
+          <MainNav>{children}</MainNav>
+        </ThemeProvider>
+      </body>
     </html>
   )
 }
