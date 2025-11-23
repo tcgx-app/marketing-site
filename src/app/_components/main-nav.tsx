@@ -26,50 +26,52 @@ export function MainNav({
 
   return (
     <>
-      <nav className='bg-accent z-10 hidden items-center gap-4 px-6 sm:py-5 lg:flex lg:w-full'>
-        <Link href='/'>
-          <Image
-            src='/assets/tcgx-black.svg'
-            alt='TCGX'
-            width='150'
-            height='100'
-            className='max-w-30 dark:hidden'
-          />
-          <Image
-            src='/assets/tcgx-white.svg'
-            alt='TCGX'
-            width='150'
-            height='100'
-            className='hidden max-w-30 dark:block'
-          />
-        </Link>
-        <div className='flex w-full items-center justify-end gap-6'>
-          <Link
-            href='/how-it-works'
-            className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
-          >
-            <span>How it Works</span>
+      <nav className='bg-accent z-10 hidden lg:block lg:w-full'>
+        <div className='z-10 container items-center gap-4 px-6 sm:py-5 lg:flex'>
+          <Link href='/'>
+            <Image
+              src='/assets/tcgx-black.svg'
+              alt='TCGX'
+              width='150'
+              height='100'
+              className='max-w-30 dark:hidden'
+            />
+            <Image
+              src='/assets/tcgx-white.svg'
+              alt='TCGX'
+              width='150'
+              height='100'
+              className='hidden max-w-30 dark:block'
+            />
           </Link>
-          <Link
-            href='/pricing'
-            className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
-          >
-            <span>Pricing</span>
-          </Link>
-          <Link
-            href='/stores'
-            className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
-          >
-            <span>For Stores</span>
-          </Link>
-          <Link
-            href={`${appUrl}/signin`}
-            className='text-foreground hover:bg-muted mx-8 flex items-center gap-3 rounded-md p-2 font-bold transition-colors hover:no-underline'
-          >
-            <UserRound className='h-5 w-5' />
-            <span>Sign in</span>
-          </Link>
-          <ThemeSwitcher />
+          <div className='flex w-full items-center justify-end gap-6'>
+            <Link
+              href='/how-it-works'
+              className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
+            >
+              <span>How It Works</span>
+            </Link>
+            <Link
+              href='/pricing'
+              className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
+            >
+              <span>Pricing</span>
+            </Link>
+            <Link
+              href='/stores'
+              className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
+            >
+              <span>For Stores</span>
+            </Link>
+            <Link
+              href={`${appUrl}/signin`}
+              className='text-foreground hover:bg-muted mx-8 flex items-center gap-3 rounded-md p-2 font-bold transition-colors hover:no-underline'
+            >
+              <UserRound className='h-5 w-5' />
+              <span>Sign in</span>
+            </Link>
+            <ThemeSwitcher />
+          </div>
         </div>
       </nav>
 
@@ -150,7 +152,7 @@ export function MainNav({
                       setOpenSheet(false)
                     }}
                   >
-                    How it works
+                    How It works
                   </Link>
                   <Link
                     href='/pricing'
