@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
 import { buttonVariants } from '@/_components/ui/button'
 import { SquareUserRound, Store, Trophy } from 'lucide-react'
+import { AutoplayVideo } from './_components/autoplay-video'
 
 export default function Home() {
   return (
@@ -157,7 +158,7 @@ export default function Home() {
 
       <div className='bg-accent w-full'>
         <div className='container flex flex-wrap gap-8 px-4 py-10 sm:px-10 sm:py-20'>
-          <div className='space-y-6 md:basis-[calc(50%-16px)]'>
+          <div className='flex flex-col justify-center space-y-6 md:basis-[calc(40%-16px)]'>
             <h1>Customer buylists in a few clicks</h1>
             <p>
               Let players search your inventory, build a buylist, and send it
@@ -173,13 +174,29 @@ export default function Home() {
               </li>
             </ol>
           </div>
-          <div className='md:basis-[calc(50%-16px)]'>Image</div>
+          <div className='md:basis-[calc(60%-16px)]'>
+            <AutoplayVideo
+              src='https://tcgxstorageaccount.blob.core.windows.net/tcgx-ebay/buylist2.mp4'
+              className='drop-shadow-foreground/20 dark:drop-shadow-background/20 w-full drop-shadow-xl'
+              controls
+              muted
+              loop
+            />
+          </div>
         </div>
       </div>
 
       <div className='container flex w-full flex-wrap gap-8 px-4 py-10 sm:px-10 sm:py-20'>
-        <div className='md:basis-[calc(50%-16px)]'>Image</div>
-        <div className='space-y-6 md:basis-[calc(50%-16px)]'>
+        <div className='max-md:order-2 md:basis-[calc(60%-16px)]'>
+          <AutoplayVideo
+            src='https://tcgxstorageaccount.blob.core.windows.net/tcgx-ebay/priceSettings.mp4'
+            className='drop-shadow-foreground/20 dark:drop-shadow-background/20 w-full drop-shadow-xl'
+            controls
+            muted
+            loop
+          />
+        </div>
+        <div className='flex flex-col justify-center space-y-6 max-md:order-1 md:basis-[calc(40%-16px)]'>
           <h1>Smart pricing rules</h1>
           <p>
             Connect your store to TCGPlayer or Cardmarket and control exactly
@@ -245,14 +262,22 @@ export default function Home() {
       </div>
 
       <div className='container flex w-full flex-wrap gap-8 px-4 py-10 sm:px-10 sm:py-20'>
-        <div className='md:basis-[calc(50%-16px)]'>Image</div>
-        <div className='space-y-6 md:basis-[calc(50%-16px)]'>
+        <div className='max-lg:order-2 lg:basis-[calc(50%-16px)]'>
+          <Image
+            src='/assets/images/ebay-award.png'
+            alt='TCGX eBay Start-Up Winner Award'
+            width='500'
+            height='500'
+            className='w-full brightness-120'
+          />
+        </div>
+        <div className='flex flex-col justify-center space-y-6 max-lg:order-1 lg:basis-[calc(50%-16px)]'>
           <Image
             src='/assets/images/ebay.png'
             alt='eBay logo'
             width='250'
             height='150'
-            className='max-h-15 w-auto md:max-h-25'
+            className='md:max-h-25'
           />
           <h1 className='flex items-center gap-4'>
             <Trophy className='mr-4 h-30 w-30 shrink-0 stroke-1' />
