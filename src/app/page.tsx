@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className='flex h-full min-h-full grow flex-col flex-wrap items-center'>
       <div className='container flex w-full flex-wrap gap-8 px-4 py-10 sm:px-10 sm:py-20'>
-        <div className='space-y-6 md:basis-[calc(50%-16px)]'>
+        <div className='flex flex-col justify-center space-y-6 md:basis-[calc(50%-16px)]'>
           <p className='text-xl'>For TCG stores & players</p>
           <h1>Run your TCG buylists on autopilot</h1>
           <p>
@@ -29,7 +29,15 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <div className='md:basis-[calc(50%-16px)]'>Image</div>
+        <div className='md:basis-[calc(50%-16px)]'>
+          <Image
+            src='/assets/images/tcgx-app.png'
+            alt='TCGX app screenshot'
+            width='500'
+            height='500'
+            className='drop-shadow-foreground/20 dark:drop-shadow-background/20 w-full drop-shadow-xl'
+          />
+        </div>
       </div>
 
       <div className='bg-accent w-full'>
@@ -269,7 +277,7 @@ export default function Home() {
             alt='TCGX eBay Start-Up Winner Award'
             width='500'
             height='500'
-            className='w-full brightness-120'
+            className='drop-shadow-foreground/20 dark:drop-shadow-background/20 w-full brightness-120 drop-shadow-xl'
           />
         </div>
         <div className='flex flex-col justify-center space-y-6 max-lg:order-1 lg:basis-[calc(50%-16px)]'>
