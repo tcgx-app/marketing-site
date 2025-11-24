@@ -45,7 +45,7 @@ export function MainNav({
             />
           </Link>
           <div className='flex w-full items-center justify-end gap-6'>
-            <Link
+            {/* <Link
               href='/how-it-works'
               className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
             >
@@ -62,7 +62,7 @@ export function MainNav({
               className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
             >
               <span>For Stores</span>
-            </Link>
+            </Link> */}
             <Link
               href={`${appUrl}/signin`}
               className='text-foreground hover:bg-muted mx-8 flex items-center gap-3 rounded-md p-2 font-bold transition-colors hover:no-underline'
@@ -104,9 +104,16 @@ export function MainNav({
             <div className='flex gap-3'>
               <div className='text-foreground flex items-center gap-1'>
                 <ThemeSwitcher />
+                <Link
+                  href={`${appUrl}/signin`}
+                  className='text-foreground flex items-center gap-4 px-2.5'
+                >
+                  <UserRound className='h-5 w-5' />
+                  {/* <span >Sign in</span> */}
+                </Link>
               </div>
 
-              <SheetTrigger asChild>
+              {/* <SheetTrigger asChild>
                 <Button
                   size='icon'
                   variant='outline'
@@ -115,9 +122,9 @@ export function MainNav({
                   <Menu className='h-5 w-5' />
                   <SheetTitle className='sr-only'>Toggle Menu</SheetTitle>
                 </Button>
-              </SheetTrigger>
+              </SheetTrigger> */}
             </div>
-            <SheetContent
+            {/* <SheetContent
               side='left'
               className='h-dvh w-dvw overflow-y-scroll border-0 lg:max-w-5'
             >
@@ -184,7 +191,7 @@ export function MainNav({
                   </Link>
                 </div>
               </nav>
-            </SheetContent>
+            </SheetContent> */}
           </Sheet>
         </header>
       </div>
