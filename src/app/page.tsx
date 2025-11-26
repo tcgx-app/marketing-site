@@ -187,9 +187,6 @@ export default function Home() {
             <AutoplayVideo
               src='https://tcgxstorageaccount.blob.core.windows.net/tcgx-ebay/buylist2.mp4'
               className='drop-shadow-foreground/20 dark:drop-shadow-background/20 w-full drop-shadow-xl'
-              controls
-              muted
-              loop
             />
           </div>
         </div>
@@ -200,9 +197,6 @@ export default function Home() {
           <AutoplayVideo
             src='https://tcgxstorageaccount.blob.core.windows.net/tcgx-ebay/priceSettings.mp4'
             className='drop-shadow-foreground/20 dark:drop-shadow-background/20 w-full drop-shadow-xl'
-            controls
-            muted
-            loop
           />
         </div>
         <div className='flex flex-col justify-center space-y-6 max-md:order-1 md:basis-[calc(40%-16px)]'>
