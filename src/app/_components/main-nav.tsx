@@ -50,14 +50,14 @@ export function MainNav({
               className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
             >
               <span>How It Works</span>
-            </Link>
+            </Link> */}
             <Link
               href='/pricing'
               className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
             >
               <span>Pricing</span>
             </Link>
-            <Link
+            {/* <Link
               href='/stores'
               className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
             >
@@ -113,7 +113,7 @@ export function MainNav({
                 </Link>
               </div>
 
-              {/* <SheetTrigger asChild>
+              <SheetTrigger asChild>
                 <Button
                   size='icon'
                   variant='outline'
@@ -122,9 +122,9 @@ export function MainNav({
                   <Menu className='h-5 w-5' />
                   <SheetTitle className='sr-only'>Toggle Menu</SheetTitle>
                 </Button>
-              </SheetTrigger> */}
+              </SheetTrigger>
             </div>
-            {/* <SheetContent
+            <SheetContent
               side='left'
               className='h-dvh w-dvw overflow-y-scroll border-0 lg:max-w-5'
             >
@@ -152,7 +152,7 @@ export function MainNav({
                       className='hidden max-w-25 dark:block'
                     />
                   </Link>
-                  <Link
+                  {/* <Link
                     href='/how-it-works'
                     className='text-foreground flex items-center gap-4 px-2.5'
                     onClick={() => {
@@ -160,7 +160,7 @@ export function MainNav({
                     }}
                   >
                     How It works
-                  </Link>
+                  </Link> */}
                   <Link
                     href='/pricing'
                     className='text-foreground flex items-center gap-4 px-2.5'
@@ -170,8 +170,7 @@ export function MainNav({
                   >
                     Pricing
                   </Link>
-
-                  <Link
+                  {/* <Link
                     href='/stores'
                     className='text-foreground hover:bg-muted flex w-full items-center gap-3 rounded-md px-2.5 transition-colors hover:no-underline'
                     onClick={() => {
@@ -179,7 +178,7 @@ export function MainNav({
                     }}
                   >
                     <span>For Stores</span>
-                  </Link>
+                  </Link> */}
                 </div>
                 <div className='space-y-4'>
                   <Link
@@ -191,7 +190,7 @@ export function MainNav({
                   </Link>
                 </div>
               </nav>
-            </SheetContent> */}
+            </SheetContent>
           </Sheet>
         </header>
       </div>
