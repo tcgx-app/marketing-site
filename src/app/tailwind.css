@@ -21,15 +21,10 @@
   --color-accent-foreground: #181a20;
   --color-destructive: #f87171;
   --color-destructive-foreground: #f1f6fb;
-  --color-border: #e4e7ef;
-  --color-input: #e4e7ef;
-  --color-ring: #0b0e17;
   --color-radius: 0.5rem;
-  --color-chart-1: #f2994a;
-  --color-chart-2: #209e8a;
-  --color-chart-3: #3a434d;
-  --color-chart-4: #f7c873;
-  --color-chart-5: #f7a24d;
+  --color-blue: #5f84c3;
+  --colou-blue-light: #a8c2e6;
+  --color-blue-dark: #4a6a9f;
   /* Font sizes */
   --h1: 2.5rem;
   --h1-line: 3.05rem;
@@ -64,14 +59,9 @@
   --color-accent-foreground: #f1f6fb;
   --color-destructive: #a32d2d;
   --color-destructive-foreground: #f1f6fb;
-  --color-border: #232733;
-  --color-input: #232733;
-  --color-ring: #d3d8e8;
-  --color-chart-1: #2776e3;
-  --color-chart-2: #2eb397;
-  --color-chart-3: #f7a24d;
-  --color-chart-4: #b07be4;
-  --color-chart-5: #e24c7d;
+  --color-blue: #5f84c3;
+  --color-blue-light: #a8c2e6;
+  --color-blue-dark: #4a6a9f;
 }
 
 @layer base {
@@ -185,7 +175,7 @@
     white-space: nowrap;
     transition-property:
       color, background-color, border-color, text-decoration-color, fill, stroke;
-    transition-duration: 150ms;
+    transition-duration: 300ms;
     text-decoration: none;
   }
   .button:hover {
