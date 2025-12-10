@@ -36,12 +36,7 @@ export default function Pricing() {
             </p>
           </div>
           <div className='bg-background grow space-y-6 rounded-md p-8 text-center md:basis-[calc(50%-16px)]'>
-            <Badge
-              variant='outline'
-              className='border-blue text-blue dark:border-blue-light dark:text-blue-light border-2'
-            >
-              For Players
-            </Badge>
+            <Badge variant='outline-blue'>For Players</Badge>
             <h2 className='text-6xl'>FREE</h2>
             <p className='text-xl'>Forever free for players</p>
             <ul className='mx-auto w-fit text-left'>
@@ -61,7 +56,7 @@ export default function Pricing() {
             </div>
           </div>
           <div className='bg-background drop-shadow-foreground/20 dark:drop-shadow-background/20 dark:border-blue-light border-blue grow space-y-6 rounded-md border-2 p-8 text-center drop-shadow-xl md:basis-[calc(50%-16px)]'>
-            <Badge className='bg-blue text-white'>For Stores</Badge>
+            <Badge variant='blue'>For Stores</Badge>
             <h2 className='text-3xl'>
               £<span className='text-6xl'>25</span>/month
             </h2>
