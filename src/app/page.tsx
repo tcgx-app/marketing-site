@@ -21,8 +21,8 @@ export default function Home() {
             <Link
               href={`${appUrl}/signin`}
               className={twMerge(
-                buttonVariants({ variant: 'default' }),
-                'cursor-pointer hover:no-underline'
+                buttonVariants({ variant: 'blue' }),
+                'cursor-pointer hover:no-underline lg:p-6 lg:text-xl'
               )}
             >
               Get started
@@ -50,7 +50,7 @@ export default function Home() {
             <h2 className='text-4xl'>
               For <strong>players</strong>
             </h2>
-            <SquareUserRound className='mx-auto h-50 w-50 stroke-1' />
+            <SquareUserRound className='stroke-blue dark:stroke-blue-light mx-auto h-50 w-50 stroke-1' />
             <p className='text-xl'>Sell your TCG cards to stores online!</p>
             <ul className='mx-auto w-fit text-left'>
               <li className='list-disc'>Browse store buylists</li>
@@ -72,7 +72,7 @@ export default function Home() {
             <h2 className='text-4xl'>
               For <strong>businesses</strong>
             </h2>
-            <Store className='mx-auto h-50 w-50 stroke-1' />
+            <Store className='stroke-blue dark:stroke-blue-light mx-auto h-50 w-50 stroke-1' />
             <p className='text-xl'>Create a buylist for your store!</p>
             <ul className='mx-auto w-fit text-left'>
               <li className='list-disc'>Set your buy prices</li>
