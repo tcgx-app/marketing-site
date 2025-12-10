@@ -131,7 +131,7 @@ export function MainNav({
               <SheetTrigger asChild>
                 <Button
                   size='icon'
-                  variant='outline'
+                  variant='ghost'
                   className='border-0 lg:hidden'
                 >
                   <Menu className='h-5 w-5' />

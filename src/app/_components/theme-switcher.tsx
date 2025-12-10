@@ -18,7 +18,7 @@ export function ThemeSwitcher() {
 
   return (
     <Button
-      variant='outline'
+      variant='ghost'
       size='icon'
       onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
       className={cn(
@@ -32,7 +32,7 @@ export function ThemeSwitcher() {
     // <DropdownMenu>
     //   <DropdownMenuTrigger asChild>
     //     <Button
-    //       variant='outline'
+    //       variant='ghost'
     //       size='icon'
     //       className={cn(
     //         'sm:hover:bg-muted h-10 w-10 shrink-0 cursor-pointer border-none bg-transparent sm:h-8 sm:w-8'
