@@ -21,10 +21,12 @@
   --color-accent-foreground: #181a20;
   --color-destructive: #f87171;
   --color-destructive-foreground: #f1f6fb;
+  --color-border: #e4e7ef;
+  --color-input: #e4e7ef;
   --color-radius: 0.5rem;
-  --color-blue: #5f84c3;
+  --color-blue: #406bb2;
   --color-blue-light: #a8c2e6;
-  --color-blue-dark: #4a6a9f;
+  --color-blue-dark: #2d4fa2;
   /* Font sizes */
   --h1: 2.5rem;
   --h1-line: 3.05rem;
@@ -59,9 +61,11 @@
   --color-accent-foreground: #f1f6fb;
   --color-destructive: #a32d2d;
   --color-destructive-foreground: #f1f6fb;
-  --color-blue: #5f84c3;
+  --color-border: #232733;
+  --color-input: #232733;
+  --color-blue: #406bb2;
   --color-blue-light: #a8c2e6;
-  --color-blue-dark: #4a6a9f;
+  --color-blue-dark: #2d4fa2;
 }
 
 @layer base {
