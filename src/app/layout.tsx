@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
 
-import { MainNav } from './_components/main-nav'
+import { MainNav } from '../components/common/main-nav'
 
 import '../app/tailwind.css'
 
