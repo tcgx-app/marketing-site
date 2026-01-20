@@ -80,7 +80,7 @@ export default function Pricing() {
         </div>
       </div>
 
-      <div className='container w-full space-y-10 px-4 py-10 text-center sm:px-10 sm:py-20 lg:space-y-15'>
+      {/* <div className='container w-full space-y-10 px-4 py-10 text-center sm:px-10 sm:py-20 lg:space-y-15'>
         <h1>Everything included in the store plan </h1>
         <div className='space-between flex flex-wrap items-stretch justify-center gap-4 lg:gap-8'>
           <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
@@ -108,7 +108,7 @@ export default function Pricing() {
             Something
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className='bg-accent w-full'>
         <div className='container space-y-10 px-4 py-10 text-center sm:px-10 sm:py-20 lg:space-y-15'>
