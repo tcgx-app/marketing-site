@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
-import { buttonVariants } from '@/_components/ui/button'
-import { Badge } from '@/_components/ui/badge'
+import { buttonVariants } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
 
 export default function Pricing() {
   const appUrl = 'https://buylist.tcgx.co.uk'

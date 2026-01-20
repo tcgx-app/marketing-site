@@ -1,9 +1,9 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
-import { buttonVariants } from '@/_components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import { SquareUserRound, Store, Trophy } from 'lucide-react'
-import { AutoplayVideo } from './_components/autoplay-video'
+import { AutoplayVideo } from '../components/common/autoplay-video'
 
 export default function Home() {
   const appUrl = 'https://buylist.tcgx.co.uk'
