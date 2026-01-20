@@ -6,7 +6,7 @@ import { SquareUserRound, Store, Trophy } from 'lucide-react'
 import { AutoplayVideo } from './_components/autoplay-video'
 
 export default function Home() {
-  const appUrl = 'https://app.tcgx.co.uk'
+  const appUrl = 'https://buylist.tcgx.co.uk'
   return (
     <main className='flex h-full min-h-full grow flex-col flex-wrap items-center'>
       <div className='container flex w-full flex-wrap gap-8 px-4 py-10 sm:px-10 sm:py-20'>

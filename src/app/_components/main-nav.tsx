@@ -23,7 +23,7 @@ export function MainNav({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const appUrl = 'https://app.tcgx.co.uk'
+  const appUrl = 'https://buylist.tcgx.co.uk'
   const pathname = usePathname().replace(/\/$/, '') || '/'
   const [openSheet, setOpenSheet] = useState(false)
 

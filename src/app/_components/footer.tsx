@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 export function Footer() {
-  const appUrl = 'https://app.tcgx.co.uk'
+  const appUrl = 'https://buylist.tcgx.co.uk'
 
   return (
     <footer className='bg-muted dark:bg-muted/40 w-full'>
