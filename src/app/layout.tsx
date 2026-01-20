@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 import { ThemeProvider } from 'next-themes'
 
-import { MainNav } from './_components/main-nav'
+import { MainNav } from '../components/common/main-nav'
 
 import '../app/tailwind.css'
 
-import { Inter } from 'next/font/google'
-const inter = Inter({ subsets: ['latin'] })
+import { Public_Sans } from 'next/font/google'
+const publicSans = Public_Sans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: {
@@ -23,7 +23,7 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang='en' suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={publicSans.className}>
         <ThemeProvider
           defaultTheme='system'
           enableSystem

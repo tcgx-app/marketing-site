@@ -3,25 +3,28 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Menu, UserRound } from 'lucide-react'
+import { Gem, Menu, UserRound } from 'lucide-react'
 
-import { Button } from '@/_components/ui/button'
+import { Button, buttonVariants } from '@/components/ui/button'
 import {
   Sheet,
   SheetContent,
   SheetTitle,
   SheetTrigger
-} from '@/_components/ui/sheet'
+} from '@/components/ui/sheet'
 
 import { ThemeSwitcher } from './theme-switcher'
 import { Footer } from './footer'
+import { usePathname } from 'next/navigation'
+import { cn } from '@/lib/utils'
 
 export function MainNav({
   children
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const appUrl = 'https://app.tcgx.co.uk'
+  const appUrl = 'https://buylist.tcgx.co.uk'
+  const pathname = usePathname().replace(/\/$/, '') || '/'
   const [openSheet, setOpenSheet] = useState(false)
 
   return (
@@ -47,27 +50,39 @@ export function MainNav({
           <div className='flex w-full items-center justify-end gap-6'>
             {/* <Link
               href='/how-it-works'
-              className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
+              className={cn(
+                'text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline',
+                pathname === '/how-it-works' ? 'bg-muted' : ''
+              )}
             >
               <span>How It Works</span>
-            </Link>
+            </Link> */}
             <Link
               href='/pricing'
-              className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
+              className={cn(
+                'text-foreground 2 hover:border-blue mx-2 -mb-[2px] flex items-center gap-3 border-b-2 border-transparent py-2 transition-colors hover:no-underline',
+                pathname === '/pricing' ? 'border-blue' : ''
+              )}
             >
               <span>Pricing</span>
             </Link>
-            <Link
+            {/* <Link
               href='/stores'
-              className='text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline'
+              className={cn(
+                'text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline',
+                pathname === '/stores' ? 'bg-muted' : ''
+              )}
             >
               <span>For Stores</span>
             </Link> */}
             <Link
               href={`${appUrl}/signin`}
-              className='text-foreground hover:bg-muted mx-8 flex items-center gap-3 rounded-md p-2 font-bold transition-colors hover:no-underline'
+              className={cn(
+                buttonVariants({ variant: 'blue' }),
+                'mx-8 flex items-center gap-3 rounded-md transition-colors hover:no-underline'
+              )}
             >
-              <UserRound className='h-5 w-5' />
+              {/* <UserRound className='h-5 w-5' /> */}
               <span>Sign in</span>
             </Link>
             <ThemeSwitcher />
@@ -113,18 +128,18 @@ export function MainNav({
                 </Link>
               </div>
 
-              {/* <SheetTrigger asChild>
+              <SheetTrigger asChild>
                 <Button
                   size='icon'
-                  variant='outline'
+                  variant='ghost'
                   className='border-0 lg:hidden'
                 >
                   <Menu className='h-5 w-5' />
                   <SheetTitle className='sr-only'>Toggle Menu</SheetTitle>
                 </Button>
-              </SheetTrigger> */}
+              </SheetTrigger>
             </div>
-            {/* <SheetContent
+            <SheetContent
               side='left'
               className='h-dvh w-dvw overflow-y-scroll border-0 lg:max-w-5'
             >
@@ -152,7 +167,7 @@ export function MainNav({
                       className='hidden max-w-25 dark:block'
                     />
                   </Link>
-                  <Link
+                  {/* <Link
                     href='/how-it-works'
                     className='text-foreground flex items-center gap-4 px-2.5'
                     onClick={() => {
@@ -160,7 +175,7 @@ export function MainNav({
                     }}
                   >
                     How It works
-                  </Link>
+                  </Link> */}
                   <Link
                     href='/pricing'
                     className='text-foreground flex items-center gap-4 px-2.5'
@@ -168,10 +183,10 @@ export function MainNav({
                       setOpenSheet(false)
                     }}
                   >
+                    <Gem className='h-5 w-5' />
                     Pricing
                   </Link>
-
-                  <Link
+                  {/* <Link
                     href='/stores'
                     className='text-foreground hover:bg-muted flex w-full items-center gap-3 rounded-md px-2.5 transition-colors hover:no-underline'
                     onClick={() => {
@@ -179,19 +194,22 @@ export function MainNav({
                     }}
                   >
                     <span>For Stores</span>
-                  </Link>
+                  </Link> */}
                 </div>
                 <div className='space-y-4'>
                   <Link
                     href={`${appUrl}/signin`}
-                    className='text-foreground flex items-center gap-4 px-2.5'
+                    className={cn(
+                      buttonVariants({ variant: 'blue' }),
+                      'flex items-center gap-4'
+                    )}
                   >
-                    <UserRound className='h-5 w-5' />
+                    {/* <UserRound className='h-5 w-5' /> */}
                     <span>Sign in</span>
                   </Link>
                 </div>
               </nav>
-            </SheetContent> */}
+            </SheetContent>
           </Sheet>
         </header>
       </div>

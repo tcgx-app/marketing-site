@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
-import { buttonVariants } from '@/_components/ui/button'
+import { buttonVariants } from '@/components/ui/button'
 import { SquareUserRound, Store, Trophy } from 'lucide-react'
-import { AutoplayVideo } from './_components/autoplay-video'
+import { AutoplayVideo } from '../components/common/autoplay-video'
 
 export default function Home() {
-  const appUrl = 'https://app.tcgx.co.uk'
+  const appUrl = 'https://buylist.tcgx.co.uk'
   return (
     <main className='flex h-full min-h-full grow flex-col flex-wrap items-center'>
       <div className='container flex w-full flex-wrap gap-8 px-4 py-10 sm:px-10 sm:py-20'>
@@ -21,8 +21,8 @@ export default function Home() {
             <Link
               href={`${appUrl}/signin`}
               className={twMerge(
-                buttonVariants({ variant: 'default' }),
-                'cursor-pointer hover:no-underline'
+                buttonVariants({ variant: 'blue' }),
+                'cursor-pointer hover:no-underline lg:p-6 lg:text-xl'
               )}
             >
               Get started
@@ -50,7 +50,7 @@ export default function Home() {
             <h2 className='text-4xl'>
               For <strong>players</strong>
             </h2>
-            <SquareUserRound className='mx-auto h-50 w-50 stroke-1' />
+            <SquareUserRound className='stroke-blue dark:stroke-blue-light mx-auto h-50 w-50 stroke-1' />
             <p className='text-xl'>Sell your TCG cards to stores online!</p>
             <ul className='mx-auto w-fit text-left'>
               <li className='list-disc'>Browse store buylists</li>
@@ -72,7 +72,7 @@ export default function Home() {
             <h2 className='text-4xl'>
               For <strong>businesses</strong>
             </h2>
-            <Store className='mx-auto h-50 w-50 stroke-1' />
+            <Store className='stroke-blue dark:stroke-blue-light mx-auto h-50 w-50 stroke-1' />
             <p className='text-xl'>Create a buylist for your store!</p>
             <ul className='mx-auto w-fit text-left'>
               <li className='list-disc'>Set your buy prices</li>
@@ -141,10 +141,7 @@ export default function Home() {
               className='max-h-15 w-auto md:max-h-25'
             />
           </div>
-          <div className='flex w-auto items-center justify-center rounded-md p-4 text-xl font-bold italic'>
-            ...and more coming soon!
-          </div>
-          {/* <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
+          <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
             <Image
               src='/assets/images/riftbound.png'
               alt='Riftbound TCG logo'
@@ -152,7 +149,10 @@ export default function Home() {
               height='150'
               className='max-h-15 w-auto md:max-h-25'
             />
-          </div> */}
+          </div>
+          <div className='flex w-auto items-center justify-center rounded-md p-4 text-xl font-bold italic'>
+            ...and more coming soon!
+          </div>
           {/* <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
             <Image
               src='/assets/images/starwars.png'
