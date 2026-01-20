@@ -141,10 +141,7 @@ export default function Home() {
               className='max-h-15 w-auto md:max-h-25'
             />
           </div>
-          <div className='flex w-auto items-center justify-center rounded-md p-4 text-xl font-bold italic'>
-            ...and more coming soon!
-          </div>
-          {/* <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
+          <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
             <Image
               src='/assets/images/riftbound.png'
               alt='Riftbound TCG logo'
@@ -152,7 +149,10 @@ export default function Home() {
               height='150'
               className='max-h-15 w-auto md:max-h-25'
             />
-          </div> */}
+          </div>
+          <div className='flex w-auto items-center justify-center rounded-md p-4 text-xl font-bold italic'>
+            ...and more coming soon!
+          </div>
           {/* <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
             <Image
               src='/assets/images/starwars.png'
