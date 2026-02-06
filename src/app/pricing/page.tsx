@@ -151,7 +151,7 @@ export default function Pricing() {
             From binder to cash in a few clicks
           </span>
         </div>
-        <div className='flex w-full justify-between lg:max-w-[1600px]'>
+        <div className='z-1 flex w-full justify-between lg:max-w-[1600px]'>
           <div className='max-w-1/3'>
             <Image
               src='/assets/images/tcgx-image-3.png'
