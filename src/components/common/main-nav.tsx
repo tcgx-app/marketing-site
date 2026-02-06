@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Gem, Menu, UserRound } from 'lucide-react'
+import { Gem, ListCheck, Menu, UserRound } from 'lucide-react'
 
 import { Button, buttonVariants } from '@/components/ui/button'
 import {
@@ -48,15 +48,15 @@ export function MainNav({
             />
           </Link>
           <div className='flex w-full items-center justify-end gap-6'>
-            {/* <Link
-              href='/how-it-works'
+            <Link
+              href='/features'
               className={cn(
-                'text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline',
-                pathname === '/how-it-works' ? 'bg-muted' : ''
+                'text-foreground 2 hover:border-blue mx-2 -mb-[2px] flex items-center gap-3 border-b-2 border-transparent py-2 transition-colors hover:no-underline',
+                pathname === '/features' ? 'border-blue' : ''
               )}
             >
-              <span>How It Works</span>
-            </Link> */}
+              <span>Features</span>
+            </Link>
             <Link
               href='/pricing'
               className={cn(
@@ -167,15 +167,16 @@ export function MainNav({
                       className='hidden max-w-25 dark:block'
                     />
                   </Link>
-                  {/* <Link
-                    href='/how-it-works'
+                  <Link
+                    href='/features'
                     className='text-foreground flex items-center gap-4 px-2.5'
                     onClick={() => {
                       setOpenSheet(false)
                     }}
                   >
-                    How It works
-                  </Link> */}
+                    <ListCheck className='h-5 w-5' />
+                    Features
+                  </Link>
                   <Link
                     href='/pricing'
                     className='text-foreground flex items-center gap-4 px-2.5'
