@@ -17,7 +17,7 @@ export function AutoplayVideo({
   className,
   width = '320',
   height = '240',
-  controls = true,
+  controls = false,
   muted = true,
   loop = true
 }: AutoplayVideoProps) {
