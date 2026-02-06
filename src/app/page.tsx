@@ -50,17 +50,27 @@ export default function Home() {
             <h2 className='text-4xl'>
               For <strong>players</strong>
             </h2>
-            <SquareUserRound className='stroke-blue dark:stroke-blue-light mx-auto h-50 w-50 stroke-1' />
+            <div className='flex w-full justify-center'>
+              <Image
+                src='/assets/images/tcgx-image-3.png'
+                alt='TCGX app screenshot'
+                width='50'
+                height='50'
+                className='max-h-50 w-auto'
+              />
+            </div>
             <p className='text-xl'>Sell your TCG cards to stores online!</p>
             <ul className='mx-auto w-fit text-left'>
-              <li className='list-disc'>Browse store buylists</li>
-              <li className='list-disc'>Submit your cards</li>
+              <li className='list-disc'>Browse real store buylists</li>
+              <li className='list-disc'>Works across all major TCGs</li>
+              <li className='list-disc'>Submit your cards in minutes</li>
+              <li className='list-disc'>Get paid by trusted stores</li>
             </ul>
             <div className='flex w-full justify-center'>
               <Link
                 href={`${appUrl}/signin`}
                 className={twMerge(
-                  buttonVariants({ variant: 'default' }),
+                  buttonVariants({ variant: 'blue' }),
                   'cursor-pointer hover:no-underline'
                 )}
               >
@@ -72,17 +82,27 @@ export default function Home() {
             <h2 className='text-4xl'>
               For <strong>businesses</strong>
             </h2>
-            <Store className='stroke-blue dark:stroke-blue-light mx-auto h-50 w-50 stroke-1' />
+            <div className='flex w-full justify-center'>
+              <Image
+                src='/assets/images/tcgx-image-2.png'
+                alt='TCGX app screenshot'
+                width='50'
+                height='50'
+                className='max-h-50 w-auto'
+              />
+            </div>
             <p className='text-xl'>Create a buylist for your store!</p>
             <ul className='mx-auto w-fit text-left'>
-              <li className='list-disc'>Set your buy prices</li>
-              <li className='list-disc'>Get card offers online</li>
+              <li className='list-disc'>Build buylists at scale</li>
+              <li className='list-disc'>Pricing powered by live market data</li>
+              <li className='list-disc'>Spend less time pricing cards</li>
+              <li className='list-disc'>Buy more stock, faster</li>
             </ul>
             <div className='flex w-full justify-center'>
               <Link
                 href={`${appUrl}/signin`}
                 className={twMerge(
-                  buttonVariants({ variant: 'default' }),
+                  buttonVariants({ variant: 'blue' }),
                   'cursor-pointer hover:no-underline'
                 )}
               >

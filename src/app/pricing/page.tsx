@@ -138,7 +138,7 @@ export default function Pricing() {
           href='/features'
           className={twMerge(
             buttonVariants({ variant: 'blue' }),
-            'cursor-pointer hover:no-underline'
+            'min-w-[200px] cursor-pointer text-lg hover:no-underline'
           )}
         >
           See all features
@@ -147,7 +147,7 @@ export default function Pricing() {
 
       <div className='relative container flex max-w-full justify-center max-sm:px-4'>
         <div className='bg-blue absolute top-6 left-0 flex h-full max-h-30 w-full items-center justify-center sm:top-12 md:max-h-45 lg:top-20 lg:max-h-62.5'>
-          <span className='max-w-1/3 text-center text-white md:text-2xl'>
+          <span className='max-w-1/3 text-center text-white md:text-4xl'>
             From binder to cash in a few clicks
           </span>
         </div>
@@ -158,7 +158,7 @@ export default function Pricing() {
               alt='TCGX app screenshot'
               width='500'
               height='500'
-              className='drop-shadow-foreground/20 dark:drop-shadow-background/20 w-full drop-shadow-xl'
+              className='w-full'
             />
           </div>
           <div className='mt-16 max-w-1/3 lg:mt-30'>
@@ -167,7 +167,7 @@ export default function Pricing() {
               alt='TCGX app screenshot'
               width='500'
               height='500'
-              className='drop-shadow-foreground/20 dark:drop-shadow-background/20 w-full drop-shadow-xl'
+              className='w-full'
             />
           </div>
         </div>
