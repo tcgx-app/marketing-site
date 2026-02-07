@@ -17,7 +17,7 @@ export default function Home() {
             Customers submit buylists online. You control prices with live
             marketplace data.
           </p>
-          <div className='flex w-full justify-center'>
+          <div className='flex w-full justify-center gap-2'>
             <Link
               href={`${appUrl}/signin`}
               className={twMerge(
@@ -26,6 +26,15 @@ export default function Home() {
               )}
             >
               Get started
+            </Link>
+            <Link
+              href='mailto:contact@tcgx.co.uk?subject=Book a demo'
+              className={twMerge(
+                buttonVariants({ variant: 'outline-blue' }),
+                'border-box cursor-pointer hover:no-underline lg:p-6 lg:text-xl'
+              )}
+            >
+              Book a demo
             </Link>
           </div>
         </div>
