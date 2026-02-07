@@ -21,8 +21,8 @@ export default function Home() {
             <Link
               href={`${appUrl}/signin`}
               className={twMerge(
-                buttonVariants({ variant: 'blue' }),
-                'cursor-pointer hover:no-underline lg:p-6 lg:text-xl'
+                buttonVariants({ variant: 'blue', size: 'lg' }),
+                'cursor-pointer hover:no-underline'
               )}
             >
               Get started
@@ -30,8 +30,8 @@ export default function Home() {
             <Link
               href='mailto:contact@tcgx.co.uk?subject=Book a demo'
               className={twMerge(
-                buttonVariants({ variant: 'outline-blue' }),
-                'border-box cursor-pointer hover:no-underline lg:p-6 lg:text-xl'
+                buttonVariants({ variant: 'outline-blue', size: 'lg' }),
+                'cursor-pointer hover:no-underline'
               )}
             >
               Book a demo
