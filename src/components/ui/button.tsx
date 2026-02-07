@@ -20,14 +20,14 @@ const buttonVariants = cva(
           'bg-secondary text-secondary-foreground hover:bg-secondary/80',
         ghost: 'hover:bg-accent hover:text-accent-foreground',
         link: 'text-primary underline-offset-4 hover:underline',
-        blue: 'bg-blue hover:bg-blue-dark text-white border-2',
+        blue: 'bg-blue hover:bg-blue-dark text-white ',
         'outline-blue':
           'border-blue dark:border-blue-light border-2 bg-transparent hover:bg-accent text-blue dark:text-blue-light'
       },
       size: {
         default: 'h-10 px-4 py-2',
         sm: 'h-9 rounded px-3',
-        lg: 'h-11 rounded px-8',
+        lg: 'h-11 rounded px-8 text-lg',
         icon: 'h-10 w-10'
       }
     },
