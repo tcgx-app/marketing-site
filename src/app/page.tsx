@@ -2,8 +2,9 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
 import { buttonVariants } from '@/components/ui/button'
-import { SquareUserRound, Store, Trophy } from 'lucide-react'
+import { Trophy } from 'lucide-react'
 import { AutoplayVideo } from '../components/common/autoplay-video'
+import CalendlyButton from './_components/Calendly'
 
 export default function Home() {
   const appUrl = 'https://buylist.tcgx.co.uk'
@@ -27,15 +28,18 @@ export default function Home() {
             >
               Get started
             </Link>
-            <Link
-              href='mailto:contact@tcgx.co.uk?subject=Book a demo'
+            {/* <Link
+              href='https://calendly.com/brian-tcgx/tcgx-demo'
               className={twMerge(
                 buttonVariants({ variant: 'outline-blue', size: 'lg' }),
                 'cursor-pointer hover:no-underline'
               )}
+              target='_blank'
+              rel='noopener noreferrer'
             >
               Book a demo
-            </Link>
+            </Link> */}
+            <CalendlyButton />
           </div>
         </div>
         <div className='md:basis-[calc(50%-16px)]'>
