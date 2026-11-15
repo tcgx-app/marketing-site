@@ -5,6 +5,7 @@ import { buttonVariants } from '@/components/ui/button'
 import { Trophy } from 'lucide-react'
 import { AutoplayVideo } from '../components/common/autoplay-video'
 import CalendlyButton from './_components/Calendly'
+import { CharacterIllustration } from './_components/CharacterIllustration'
 
 export default function Home() {
   const appUrl = 'https://buylist.tcgx.co.uk'
@@ -64,12 +65,10 @@ export default function Home() {
               For <strong>players</strong>
             </h2>
             <div className='flex w-full justify-center'>
-              <Image
-                src='/assets/images/tcgx-image-3.png'
-                alt='TCGX app screenshot'
-                width='50'
-                height='50'
-                className='max-h-50 w-auto'
+              <CharacterIllustration
+                character='collector'
+                className='block w-full max-w-80'
+                sizes='(min-width: 768px) 320px, calc(100vw - 96px)'
               />
             </div>
             <p className='text-xl'>Sell your TCG cards to stores online!</p>
@@ -96,12 +95,10 @@ export default function Home() {
               For <strong>businesses</strong>
             </h2>
             <div className='flex w-full justify-center'>
-              <Image
-                src='/assets/images/tcgx-image-2.png'
-                alt='TCGX app screenshot'
-                width='50'
-                height='50'
-                className='max-h-50 w-auto'
+              <CharacterIllustration
+                character='store-owner'
+                className='block w-full max-w-80'
+                sizes='(min-width: 768px) 320px, calc(100vw - 96px)'
               />
             </div>
             <p className='text-xl'>Create a buylist for your store!</p>

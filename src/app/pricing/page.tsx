@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { twMerge } from 'tailwind-merge'
 
 import { buttonVariants } from '@/components/ui/button'
@@ -11,6 +10,7 @@ import {
   AccordionTrigger
 } from '@/components/ui/accordion'
 import { Banner } from '../_components/Banner'
+import { CharacterIllustration } from '../_components/CharacterIllustration'
 
 export default function Pricing() {
   const appUrl = 'https://buylist.tcgx.co.uk'
@@ -24,13 +24,12 @@ export default function Pricing() {
             commissions.
           </p>
         </div>
-        <div className='md:basis-[calc(50%-16px)]'>
-          <Image
-            src='/assets/images/tcgx-image-1.png'
-            alt='TCGX app screenshot'
-            width='500'
-            height='500'
-            className='w-full'
+        <div className='w-full min-w-0 md:basis-[calc(50%-16px)]'>
+          <CharacterIllustration
+            character='pricing-pair'
+            className='block w-full'
+            sizes='(min-width: 1280px) 584px, (min-width: 768px) 50vw, calc(100vw - 32px)'
+            priority
           />
         </div>
       </div>
