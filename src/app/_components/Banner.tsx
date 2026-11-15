@@ -1,32 +1,24 @@
-import Image from 'next/image'
+import { CharacterIllustration } from './CharacterIllustration'
 
 export const Banner = () => {
   return (
-    <div className='relative container flex max-w-full justify-center max-sm:px-4'>
-      <div className='bg-blue absolute top-6 left-0 flex h-full max-h-30 w-full items-center justify-center sm:top-12 md:max-h-45 lg:top-20 lg:max-h-62.5'>
-        <span className='max-w-1/3 text-center text-white md:text-4xl'>
+    <div className='bg-blue w-full'>
+      <div className='container grid grid-cols-2 items-end gap-x-4 gap-y-6 px-4 py-8 sm:px-10 md:grid-cols-3 md:items-center'>
+        <span className='order-1 col-span-2 text-center text-2xl font-semibold text-white md:order-2 md:col-span-1 md:text-3xl lg:text-4xl'>
           From binder to cash in a few clicks
         </span>
-      </div>
-      <div className='z-1 -mt-6 flex w-full justify-between lg:max-w-[1600px]'>
-        <div className='max-w-1/3'>
-          <Image
-            src='/assets/images/tcgx-image-3.png'
-            alt='TCGX app screenshot'
-            width='500'
-            height='500'
-            className='w-full'
-          />
-        </div>
-        <div className='mt-16 max-w-1/3 lg:mt-30'>
-          <Image
-            src='/assets/images/tcgx-image-2.png'
-            alt='TCGX app screenshot'
-            width='500'
-            height='500'
-            className='w-full'
-          />
-        </div>
+        <CharacterIllustration
+          character='collector'
+          className='order-2 block w-full min-w-0 md:order-1'
+          sizes='(min-width: 1280px) 390px, (min-width: 768px) 33vw, 45vw'
+          decorative
+        />
+        <CharacterIllustration
+          character='store-owner'
+          className='order-3 block w-full min-w-0'
+          sizes='(min-width: 1280px) 390px, (min-width: 768px) 33vw, 45vw'
+          decorative
+        />
       </div>
     </div>
   )
