@@ -3,217 +3,171 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Gem, ListCheck, Menu, UserRound } from 'lucide-react'
-
+import { usePathname } from 'next/navigation'
+import { Menu, UserRound } from 'lucide-react'
 import { Button, buttonVariants } from '@/components/ui/button'
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetTitle,
   SheetTrigger
 } from '@/components/ui/sheet'
-
+import { SIGN_IN_URL, STORES_URL } from '@/lib/site'
+import { cn } from '@/lib/utils'
 import { ThemeSwitcher } from './theme-switcher'
 import { Footer } from './footer'
-import { usePathname } from 'next/navigation'
-import { cn } from '@/lib/utils'
 
-export function MainNav({
-  children
-}: Readonly<{
-  children: React.ReactNode
-}>) {
-  const appUrl = 'https://buylist.tcgx.co.uk'
-  const pathname = usePathname().replace(/\/$/, '') || '/'
-  const [openSheet, setOpenSheet] = useState(false)
+const items = [
+  { label: 'Features', href: '/features/' },
+  { label: 'Pricing', href: '/pricing/' },
+  { label: 'Find a store', href: STORES_URL }
+]
 
+function Logo() {
   return (
     <>
-      <nav className='bg-accent z-10 hidden lg:block lg:w-full'>
-        <div className='z-10 container items-center gap-4 px-6 sm:py-5 lg:flex'>
-          <Link href='/'>
-            <Image
-              src='/assets/tcgx-black.svg'
-              alt='TCGX'
-              width='150'
-              height='100'
-              className='max-w-30 dark:hidden'
-            />
-            <Image
-              src='/assets/tcgx-white.svg'
-              alt='TCGX'
-              width='150'
-              height='100'
-              className='hidden max-w-30 dark:block'
-            />
+      <Image
+        src='/assets/tcgx-black.svg'
+        alt=''
+        width={300}
+        height={67}
+        loading='eager'
+        className='block h-auto w-full dark:hidden'
+      />
+      <Image
+        src='/assets/tcgx-white.svg'
+        alt=''
+        width={300}
+        height={67}
+        loading='eager'
+        className='hidden h-auto w-full dark:block'
+      />
+    </>
+  )
+}
+
+export function MainNav({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname().replace(/\/$/, '') || '/'
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <a href='#main-content' className='skip-link'>
+        Skip to content
+      </a>
+      <header className='bg-accent border-border border-b'>
+        <nav
+          aria-label='Main navigation'
+          className='container flex min-h-20 items-center justify-between gap-6 px-6 py-4 max-lg:hidden'
+        >
+          <Link href='/' aria-label='TCGX home' className='block w-30 shrink-0'>
+            <Logo />
           </Link>
-          <div className='flex w-full items-center justify-end gap-6'>
-            <Link
-              href='/features'
-              className={cn(
-                'text-foreground 2 hover:border-blue mx-2 -mb-[2px] flex items-center gap-3 border-b-2 border-transparent py-2 transition-colors hover:no-underline',
-                pathname === '/features' ? 'border-blue' : ''
-              )}
-            >
-              <span>Features</span>
-            </Link>
-            <Link
-              href='/pricing'
-              className={cn(
-                'text-foreground 2 hover:border-blue mx-2 -mb-[2px] flex items-center gap-3 border-b-2 border-transparent py-2 transition-colors hover:no-underline',
-                pathname === '/pricing' ? 'border-blue' : ''
-              )}
-            >
-              <span>Pricing</span>
-            </Link>
-            {/* <Link
-              href='/stores'
-              className={cn(
-                'text-foreground hover:bg-muted flex items-center gap-3 rounded-md p-2 transition-colors hover:no-underline',
-                pathname === '/stores' ? 'bg-muted' : ''
-              )}
-            >
-              <span>For Stores</span>
-            </Link> */}
-            <Link
-              href={`${appUrl}/signin`}
+          <div className='flex items-center gap-6'>
+            {items.map(item => (
+              <Link
+                key={item.href}
+                href={item.href}
+                aria-current={
+                  pathname === item.href.replace(/\/$/, '') ? 'page' : undefined
+                }
+                className={cn(
+                  'hover:border-blue inline-flex min-h-11 items-center border-b-2 border-transparent px-1 hover:no-underline',
+                  pathname === item.href.replace(/\/$/, '') && 'border-blue'
+                )}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <a
+              href={SIGN_IN_URL}
               className={cn(
                 buttonVariants({ variant: 'blue' }),
-                'mx-8 flex items-center gap-3 rounded-md transition-colors hover:no-underline'
+                'min-h-11 hover:no-underline'
               )}
             >
-              {/* <UserRound className='h-5 w-5' /> */}
-              <span>Sign in</span>
-            </Link>
+              Sign in
+            </a>
             <ThemeSwitcher />
           </div>
-        </div>
-      </nav>
-
-      {/* Mobile menu */}
-      <div className='flex flex-col lg:gap-4 lg:py-0'>
-        <header className='bg-background sticky top-0 z-30 flex h-14 items-center justify-between gap-4 border-b px-4 lg:static lg:hidden lg:h-auto lg:border-0 lg:bg-transparent lg:px-6'>
-          <Sheet open={openSheet} onOpenChange={setOpenSheet}>
-            <Link
-              href='/'
-              className='flex w-25 shrink-0'
-              onClick={() => {
-                setOpenSheet(false)
-              }}
+        </nav>
+        <div className='bg-background flex min-h-16 items-center justify-between gap-3 px-4 py-2 lg:hidden'>
+          <Link href='/' aria-label='TCGX home' className='block w-25 shrink-0'>
+            <Logo />
+          </Link>
+          <div className='flex items-center gap-1'>
+            <ThemeSwitcher />
+            <a
+              href={SIGN_IN_URL}
+              aria-label='Sign in'
+              className='inline-flex h-11 w-11 items-center justify-center'
             >
-              <Image
-                src='/assets/tcgx-black.svg'
-                alt='TCGX'
-                width='150'
-                height='100'
-                className='max-w-25 dark:hidden'
-              />
-              <Image
-                src='/assets/tcgx-white.svg'
-                alt='TCGX'
-                width='150'
-                height='100'
-                className='hidden max-w-25 dark:block'
-              />
-            </Link>
-            <div className='flex gap-3'>
-              <div className='text-foreground flex items-center gap-1'>
-                <ThemeSwitcher />
-                <Link
-                  href={`${appUrl}/signin`}
-                  className='text-foreground flex items-center gap-4 px-2.5'
-                >
-                  <UserRound className='h-5 w-5' />
-                  {/* <span >Sign in</span> */}
-                </Link>
-              </div>
-
+              <UserRound aria-hidden='true' className='h-5 w-5' />
+            </a>
+            <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button
                   size='icon'
                   variant='ghost'
-                  className='border-0 lg:hidden'
+                  aria-label='Open navigation menu'
+                  className='h-11 w-11'
                 >
-                  <Menu className='h-5 w-5' />
-                  <SheetTitle className='sr-only'>Toggle Menu</SheetTitle>
+                  <Menu aria-hidden='true' className='h-5 w-5' />
                 </Button>
               </SheetTrigger>
-            </div>
-            <SheetContent
-              side='left'
-              className='h-dvh w-dvw overflow-y-scroll border-0 lg:max-w-5'
-            >
-              <nav className='text-18 flex h-full flex-col gap-6 pt-12 font-medium'>
-                <div className='grow space-y-6'>
+              <SheetContent
+                side='left'
+                className='h-dvh w-full max-w-full overflow-y-auto border-0 sm:max-w-sm'
+              >
+                <SheetTitle asChild>
+                  <p className='sr-only'>Site navigation</p>
+                </SheetTitle>
+                <SheetDescription className='sr-only'>
+                  Explore TCGX features and pricing, browse stores or sign in.
+                </SheetDescription>
+                <nav
+                  aria-label='Mobile navigation'
+                  className='flex min-h-full flex-col gap-6 pt-14'
+                >
                   <Link
                     href='/'
-                    className='absolute top-6 left-8 w-full'
-                    onClick={() => {
-                      setOpenSheet(false)
-                    }}
+                    aria-label='TCGX home'
+                    className='block w-25'
+                    onClick={() => setOpen(false)}
                   >
-                    <Image
-                      src='/assets/tcgx-black.svg'
-                      alt='TCGX'
-                      width='150'
-                      height='100'
-                      className='max-w-25 dark:hidden'
-                    />
-                    <Image
-                      src='/assets/tcgx-white.svg'
-                      alt='TCGX'
-                      width='150'
-                      height='100'
-                      className='hidden max-w-25 dark:block'
-                    />
+                    <Logo />
                   </Link>
-                  <Link
-                    href='/features'
-                    className='text-foreground flex items-center gap-4 px-2.5'
-                    onClick={() => {
-                      setOpenSheet(false)
-                    }}
+                  {items.map(item => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className='inline-flex min-h-11 items-center text-lg font-medium'
+                      onClick={() => setOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                  <a
+                    href='mailto:contact@tcgx.co.uk'
+                    className='inline-flex min-h-11 items-center'
                   >
-                    <ListCheck className='h-5 w-5' />
-                    Features
-                  </Link>
-                  <Link
-                    href='/pricing'
-                    className='text-foreground flex items-center gap-4 px-2.5'
-                    onClick={() => {
-                      setOpenSheet(false)
-                    }}
-                  >
-                    <Gem className='h-5 w-5' />
-                    Pricing
-                  </Link>
-                  {/* <Link
-                    href='/stores'
-                    className='text-foreground hover:bg-muted flex w-full items-center gap-3 rounded-md px-2.5 transition-colors hover:no-underline'
-                    onClick={() => {
-                      setOpenSheet(false)
-                    }}
-                  >
-                    <span>For Stores</span>
-                  </Link> */}
-                </div>
-                <div className='space-y-4'>
-                  <Link
-                    href={`${appUrl}/signin`}
+                    Contact TCGX
+                  </a>
+                  <a
+                    href={SIGN_IN_URL}
                     className={cn(
                       buttonVariants({ variant: 'blue' }),
-                      'flex items-center gap-4'
+                      'mt-auto min-h-11 hover:no-underline'
                     )}
                   >
-                    {/* <UserRound className='h-5 w-5' /> */}
-                    <span>Sign in</span>
-                  </Link>
-                </div>
-              </nav>
-            </SheetContent>
-          </Sheet>
-        </header>
-      </div>
+                    Sign in
+                  </a>
+                </nav>
+              </SheetContent>
+            </Sheet>
+          </div>
+        </div>
+      </header>
       {children}
       <Footer />
     </>

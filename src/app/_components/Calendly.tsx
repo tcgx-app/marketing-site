@@ -1,39 +1,20 @@
-'use client'
+import { buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import { DEMO_URL } from '@/lib/site'
 
-import { Button } from '@/components/ui/button'
-import { useEffect } from 'react'
-
-declare global {
-  interface Window {
-    Calendly?: {
-      initPopupWidget: (options: { url: string }) => void
-    }
-  }
-}
-
-export default function CalendlyButton() {
-  useEffect(() => {
-    const script = document.createElement('script')
-    script.src = 'https://assets.calendly.com/assets/external/widget.js'
-    script.async = true
-    document.body.appendChild(script)
-  }, [])
-
-  const openCalendly = () => {
-    window.Calendly?.initPopupWidget({
-      url: 'https://calendly.com/brian-tcgx/tcgx-demo'
-    })
-  }
-
+export default function CalendlyButton({ className }: { className?: string }) {
   return (
-    <>
-      <link
-        href='https://assets.calendly.com/assets/external/widget.css'
-        rel='stylesheet'
-      />
-      <Button variant='outline-blue' size='lg' onClick={openCalendly}>
-        Book a demo
-      </Button>
-    </>
+    <a
+      href={DEMO_URL}
+      target='_blank'
+      rel='noopener noreferrer'
+      className={cn(
+        buttonVariants({ variant: 'outline-blue', size: 'lg' }),
+        'min-h-11 text-center whitespace-normal hover:no-underline',
+        className
+      )}
+    >
+      Book a demo<span className='sr-only'> (opens in a new tab)</span>
+    </a>
   )
 }

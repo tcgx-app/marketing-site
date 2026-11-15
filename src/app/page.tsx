@@ -1,329 +1,259 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { twMerge } from 'tailwind-merge'
-import { buttonVariants } from '@/components/ui/button'
 import { Trophy } from 'lucide-react'
-import { AutoplayVideo } from '../components/common/autoplay-video'
+import { buttonVariants } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
+import { AWARD_URL, STORE_SETUP_URL, STORES_URL } from '@/lib/site'
+import { AutoplayVideo } from '@/components/common/autoplay-video'
 import CalendlyButton from './_components/Calendly'
 import { CharacterIllustration } from './_components/CharacterIllustration'
+import { ProductPreview } from './_components/ProductPreview'
+import { SupportedGames } from './_components/SupportedGames'
+import { DataSources } from './_components/DataSources'
+import { PricingExample } from './_components/PricingExample'
+import { Banner } from './_components/Banner'
 
 export default function Home() {
-  const appUrl = 'https://buylist.tcgx.co.uk'
   return (
-    <main className='flex h-full min-h-full grow flex-col flex-wrap items-center'>
-      <div className='container flex w-full flex-wrap gap-8 px-4 py-10 sm:px-10 sm:py-20'>
-        <div className='flex flex-col justify-center space-y-6 md:basis-[calc(50%-16px)]'>
-          <p className='text-xl'>For TCG stores & players</p>
-          <h1>Run your TCG buylists on autopilot</h1>
-          <p>
-            Customers submit buylists online. You control prices with live
-            marketplace data.
+    <main
+      id='main-content'
+      tabIndex={-1}
+      className='flex min-w-0 grow flex-col items-center'
+    >
+      <section
+        className='container grid w-full gap-10 px-4 py-10 sm:px-10 sm:py-16 lg:grid-cols-2 lg:items-center'
+        aria-labelledby='hero-heading'
+      >
+        <div className='min-w-0 space-y-6'>
+          <p className='text-blue dark:text-blue-light text-sm font-semibold tracking-wide uppercase'>
+            For trading card stores
           </p>
-          <div className='flex w-full justify-center gap-2'>
-            <Link
-              href={`${appUrl}/signin`}
-              className={twMerge(
+          <h1 id='hero-heading'>Run your TCG buylist on autopilot</h1>
+          <p className='max-w-xl text-lg'>
+            Publish the cards your store wants to buy, set offers using market
+            data, and manage customer submissions in one place.
+          </p>
+          <p className='font-semibold'>
+            14-day free trial. Then £25/month including VAT. No commission.
+          </p>
+          <div className='flex flex-col gap-3 sm:flex-row sm:flex-wrap'>
+            <a
+              href={STORE_SETUP_URL}
+              className={cn(
                 buttonVariants({ variant: 'blue', size: 'lg' }),
-                'cursor-pointer hover:no-underline'
+                'min-h-11 text-center whitespace-normal hover:no-underline'
               )}
             >
-              Get started
-            </Link>
-            {/* <Link
-              href='https://calendly.com/brian-tcgx/tcgx-demo'
-              className={twMerge(
-                buttonVariants({ variant: 'outline-blue', size: 'lg' }),
-                'cursor-pointer hover:no-underline'
-              )}
-              target='_blank'
-              rel='noopener noreferrer'
-            >
-              Book a demo
-            </Link> */}
+              Start 14-day free trial
+            </a>
             <CalendlyButton />
           </div>
+          <p className='text-muted-foreground text-sm'>
+            Create an account, then complete your business subscription setup.
+            Payment details are required for the trial; cancel before it ends to
+            avoid the monthly charge.
+          </p>
+          <p>
+            Here to sell cards?{' '}
+            <a
+              href={STORES_URL}
+              className='text-blue dark:text-blue-light font-semibold underline'
+            >
+              Browse store buylists
+            </a>{' '}
+            without signing in.
+          </p>
+          <a
+            href={AWARD_URL}
+            className='inline-flex max-w-full items-center gap-3 text-sm'
+          >
+            <Trophy
+              aria-hidden='true'
+              className='text-blue dark:text-blue-light h-6 w-6 shrink-0'
+            />
+            <span>
+              TCGX LTD · Start-Up Award winner
+              <br />
+              eBay for Business Awards 2025
+            </span>
+          </a>
         </div>
-        <div className='md:basis-[calc(50%-16px)]'>
-          <Image
-            src='/assets/images/tcgx-app.png'
-            alt='TCGX app screenshot'
-            width='500'
-            height='500'
-            className='drop-shadow-foreground/20 dark:drop-shadow-background/20 w-full drop-shadow-xl'
-          />
+        <div className='min-w-0'>
+          <ProductPreview priority />
         </div>
-      </div>
-
-      <div className='bg-accent w-full'>
-        <div className='container flex flex-wrap gap-8 px-4 py-10 sm:px-10 sm:py-20'>
-          <div className='mb-4 flex basis-full flex-col items-center'>
-            <h1>Who is TCGX for?</h1>
-            <p className='text-xl'>Pick what best describes you.</p>
-          </div>
-          <div className='bg-background grow space-y-6 rounded-md p-8 text-center md:basis-[calc(50%-16px)]'>
-            <h2 className='text-4xl'>
-              For <strong>players</strong>
+      </section>
+      <section className='bg-accent w-full' aria-labelledby='audiences-heading'>
+        <div className='container grid gap-6 px-4 py-12 sm:px-10 sm:py-16 md:grid-cols-2'>
+          <div className='text-center md:col-span-2'>
+            <h2 id='audiences-heading'>
+              A better way for stores and players to connect
             </h2>
-            <div className='flex w-full justify-center'>
-              <CharacterIllustration
-                character='collector'
-                className='block w-full max-w-80'
-                sizes='(min-width: 768px) 320px, calc(100vw - 96px)'
-              />
-            </div>
-            <p className='text-xl'>Sell your TCG cards to stores online!</p>
-            <ul className='mx-auto w-fit text-left'>
-              <li className='list-disc'>Browse real store buylists</li>
-              <li className='list-disc'>Works across all major TCGs</li>
-              <li className='list-disc'>Submit your cards in minutes</li>
-              <li className='list-disc'>Get paid by trusted stores</li>
+            <p>Choose the journey that fits you.</p>
+          </div>
+          <article className='bg-background flex min-w-0 flex-col items-center gap-6 rounded-xl p-6 text-center sm:p-8'>
+            <h3 className='mb-0 text-3xl'>For stores</h3>
+            <CharacterIllustration
+              character='store-owner'
+              className='block w-full max-w-80'
+              sizes='(min-width: 768px) 320px, calc(100vw - 80px)'
+            />
+            <p className='text-xl'>Your store. Your buylist. Your rules.</p>
+            <ul className='mx-auto list-disc space-y-2 pl-5 text-left'>
+              <li>Set fixed offers or market-based buying rates</li>
+              <li>Control conditions and quantity limits</li>
+              <li>Offer cash or store credit on your terms</li>
+              <li>Review incoming submissions in one dashboard</li>
             </ul>
-            <div className='flex w-full justify-center'>
-              <Link
-                href={`${appUrl}/signin`}
-                className={twMerge(
-                  buttonVariants({ variant: 'blue' }),
-                  'cursor-pointer hover:no-underline'
-                )}
-              >
-                Sell my cards
-              </Link>
-            </div>
-          </div>
-          <div className='bg-background grow space-y-6 rounded-md p-8 text-center md:basis-[calc(50%-16px)]'>
-            <h2 className='text-4xl'>
-              For <strong>businesses</strong>
-            </h2>
-            <div className='flex w-full justify-center'>
-              <CharacterIllustration
-                character='store-owner'
-                className='block w-full max-w-80'
-                sizes='(min-width: 768px) 320px, calc(100vw - 96px)'
-              />
-            </div>
-            <p className='text-xl'>Create a buylist for your store!</p>
-            <ul className='mx-auto w-fit text-left'>
-              <li className='list-disc'>Build buylists at scale</li>
-              <li className='list-disc'>Pricing powered by live market data</li>
-              <li className='list-disc'>Spend less time pricing cards</li>
-              <li className='list-disc'>Buy more stock, faster</li>
+            <a
+              href={STORE_SETUP_URL}
+              className={cn(
+                buttonVariants({ variant: 'blue' }),
+                'mt-auto min-h-11 hover:no-underline'
+              )}
+            >
+              Set up my store
+            </a>
+          </article>
+          <article className='bg-background flex min-w-0 flex-col items-center gap-6 rounded-xl p-6 text-center sm:p-8'>
+            <h3 className='mb-0 text-3xl'>For players</h3>
+            <CharacterIllustration
+              character='collector'
+              className='block w-full max-w-80'
+              sizes='(min-width: 768px) 320px, calc(100vw - 80px)'
+            />
+            <p className='text-xl'>Find a store that wants your cards.</p>
+            <ul className='mx-auto list-disc space-y-2 pl-5 text-left'>
+              <li>Browse participating stores without an account</li>
+              <li>Search by card name, set or number</li>
+              <li>See each store’s offers before signing in</li>
+              <li>Submit your cards online when you are ready</li>
             </ul>
-            <div className='flex w-full justify-center'>
-              <Link
-                href={`${appUrl}/signin`}
-                className={twMerge(
-                  buttonVariants({ variant: 'blue' }),
-                  'cursor-pointer hover:no-underline'
-                )}
-              >
-                Set up my store
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className='container w-full space-y-10 px-4 py-10 text-center sm:px-10 sm:py-20 lg:space-y-15'>
-        <h1>Supported TCGs</h1>
-        <div className='space-between flex flex-wrap items-stretch justify-center gap-4 lg:gap-8'>
-          <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
-            <Image
-              src='/assets/images/pokemon.png'
-              alt='Pokemon TCG logo'
-              width='250'
-              height='150'
-              className='max-h-15 w-auto md:max-h-25'
-            />
-          </div>
-          <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
-            <Image
-              src='/assets/images/mtg.png'
-              alt='Magic: The Gathering logo'
-              width='250'
-              height='150'
-              className='max-h-15 w-auto md:max-h-25'
-            />
-          </div>
-          <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
-            <Image
-              src='/assets/images/one-piece.png'
-              alt='One Piece TCG logo'
-              width='250'
-              height='150'
-              className='max-h-15 w-auto md:max-h-25'
-            />
-          </div>
-          <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
-            <Image
-              src='/assets/images/lorcana.png'
-              alt='Disney Lorcana logo'
-              width='250'
-              height='150'
-              className='max-h-15 w-auto md:max-h-25'
-            />
-          </div>
-          <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
-            <Image
-              src='/assets/images/yugioh.png'
-              alt='Yu-Gi-Oh! TCG logo'
-              width='250'
-              height='150'
-              className='max-h-15 w-auto md:max-h-25'
-            />
-          </div>
-          <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
-            <Image
-              src='/assets/images/riftbound.png'
-              alt='Riftbound TCG logo'
-              width='250'
-              height='150'
-              className='max-h-15 w-auto md:max-h-25'
-            />
-          </div>
-          <div className='flex w-auto items-center justify-center rounded-md p-4 text-xl font-bold italic'>
-            ...and more coming soon!
-          </div>
-          {/* <div className='dark:bg-foreground bg-muted flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'>
-            <Image
-              src='/assets/images/starwars.png'
-              alt='Star Wars TCG logo'
-              width='250'
-              height='150'
-              className='max-h-15 w-auto md:max-h-25'
-            />
-          </div> */}
-        </div>
-      </div>
-
-      <div className='bg-accent w-full'>
-        <div className='container flex flex-wrap gap-8 px-4 py-10 sm:px-10 sm:py-20'>
-          <div className='flex flex-col justify-center space-y-6 md:basis-[calc(40%-16px)]'>
-            <h1>Customer buylists in a few clicks</h1>
-            <p>
-              Let players search your inventory, build a buylist, and send it
-              straight to your store for payout.
+            <a
+              href={STORES_URL}
+              className={cn(
+                buttonVariants({ variant: 'blue' }),
+                'mt-auto min-h-11 hover:no-underline'
+              )}
+            >
+              Browse stores and offers
+            </a>
+            <p className='text-muted-foreground text-sm'>
+              Each store sets its own offers, payment options and delivery
+              terms, and reviews your cards before payment.
             </p>
-            <ol className='ml-5'>
-              <li className='list-decimal'>
-                Search by card name, set, or number
+          </article>
+        </div>
+      </section>
+      <SupportedGames />
+      <section className='bg-accent w-full' aria-labelledby='customer-buylists'>
+        <div className='container grid gap-8 px-4 py-12 sm:px-10 sm:py-16 lg:grid-cols-2 lg:items-center'>
+          <div className='min-w-0 space-y-5'>
+            <h2 id='customer-buylists'>
+              Let customers build their buylist online
+            </h2>
+            <p>
+              Players search the cards your store wants to buy, choose condition
+              and quantity, and submit a buylist for your review.
+            </p>
+            <ol className='list-decimal space-y-3 pl-5'>
+              <li>
+                Find a participating store and search its buying catalogue.
               </li>
-              <li className='list-decimal'>Choose condition and quantity</li>
-              <li className='list-decimal'>
-                Submit the buylist for cash or store credit
+              <li>Choose the correct card version, condition and quantity.</li>
+              <li>
+                Sign in to submit, then follow the store’s delivery
+                instructions.
               </li>
             </ol>
+            <p className='text-muted-foreground text-sm'>
+              Cash, store credit, shipping and drop-off options depend on the
+              store.
+            </p>
+            <a
+              href={STORES_URL}
+              className='text-blue dark:text-blue-light inline-flex min-h-11 items-center font-semibold underline'
+            >
+              Explore participating stores
+            </a>
           </div>
-          <div className='md:basis-[calc(60%-16px)]'>
-            <AutoplayVideo
-              src='https://tcgxstorageaccount.blob.core.windows.net/tcgx-ebay/buylist2.mp4'
-              className='drop-shadow-foreground/20 dark:drop-shadow-background/20 w-full drop-shadow-xl'
-            />
-          </div>
-        </div>
-      </div>
-
-      <div className='container flex w-full flex-wrap gap-8 px-4 py-10 sm:px-10 sm:py-20'>
-        <div className='max-md:order-2 md:basis-[calc(60%-16px)]'>
           <AutoplayVideo
-            src='https://tcgxstorageaccount.blob.core.windows.net/tcgx-ebay/priceSettings.mp4'
-            className='drop-shadow-foreground/20 dark:drop-shadow-background/20 w-full drop-shadow-xl'
+            src='https://tcgxstorageaccount.blob.core.windows.net/tcgx-ebay/buylist2.mp4'
+            label='Product demo: searching cards and building a buylist'
+            className='h-auto w-full min-w-0 rounded-lg shadow-xl'
           />
         </div>
-        <div className='flex flex-col justify-center space-y-6 max-md:order-1 md:basis-[calc(40%-16px)]'>
-          <h1>Smart pricing rules</h1>
+      </section>
+      <PricingExample />
+      <section
+        className='container grid w-full gap-8 px-4 py-12 sm:px-10 sm:py-16 lg:grid-cols-2 lg:items-center'
+        aria-labelledby='pricing-demo'
+      >
+        <AutoplayVideo
+          src='https://tcgxstorageaccount.blob.core.windows.net/tcgx-ebay/priceSettings.mp4'
+          label='Product demo: configuring store buying rules'
+          className='order-2 h-auto w-full min-w-0 rounded-lg shadow-xl lg:order-1'
+        />
+        <div className='order-1 min-w-0 space-y-5 lg:order-2'>
+          <h2 id='pricing-demo'>Spend less time updating individual offers</h2>
           <p>
-            Connect your store to TCGPlayer or Cardmarket and control exactly
-            what you pay for every card.
+            Choose a price source, set your buying rates and apply changes
+            across matching products. Market feeds refresh daily, and
+            percentage-based offers use the updated reference prices.
           </p>
-          <ol className='ml-5'>
-            <li className='list-decimal'>Choose your price source</li>
-            <li className='list-decimal'>
-              Set rules by rarity, set, or price band
-            </li>
-            <li className='list-decimal'>
-              Offer different rates for cash vs store credit
-            </li>
-            <li className='list-decimal'>
-              Bulk update your whole buylist in one go
-            </li>
-          </ol>
-        </div>
-      </div>
-
-      <div className='bg-accent w-full'>
-        <div className='container space-y-10 px-4 py-10 text-center sm:px-10 sm:py-20 lg:space-y-15'>
-          <h1>Data Providers</h1>
-          <div className='space-between flex flex-wrap items-stretch justify-center gap-4 lg:gap-8'>
-            <Link
-              href='/'
-              className='dark:bg-foreground bg-background flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'
-            >
-              <Image
-                src='/assets/images/tcgplayer.png'
-                alt='TCGPlayer logo'
-                width='250'
-                height='150'
-                className='max-h-15 w-auto md:max-h-25'
-              />
-            </Link>
-            <Link
-              href='/'
-              className='dark:bg-foreground bg-background flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'
-            >
-              <Image
-                src='/assets/images/cardmarket.png'
-                alt='Cardmarket logo'
-                width='250'
-                height='150'
-                className='max-h-15 w-auto md:max-h-25'
-              />
-            </Link>
-            <Link
-              href='/'
-              className='dark:bg-foreground bg-background flex w-62.5 max-w-40 items-center justify-center rounded-md p-4 md:max-w-62.5'
-            >
-              <Image
-                src='/assets/images/ebay.png'
-                alt='eBay logo'
-                width='250'
-                height='150'
-                className='max-h-15 w-auto md:max-h-25'
-              />
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      <div className='container flex w-full flex-wrap gap-8 px-4 py-10 sm:px-10 sm:py-20'>
-        <div className='max-lg:order-2 lg:basis-[calc(50%-16px)]'>
-          <Image
-            src='/assets/images/ebay-award.png'
-            alt='TCGX eBay Start-Up Winner Award'
-            width='500'
-            height='500'
-            className='drop-shadow-foreground/20 dark:drop-shadow-background/20 w-full brightness-120 drop-shadow-xl'
-          />
-        </div>
-        <div className='flex flex-col justify-center space-y-6 max-lg:order-1 lg:basis-[calc(50%-16px)]'>
-          <Image
-            src='/assets/images/ebay.png'
-            alt='eBay logo'
-            width='250'
-            height='150'
-            className='md:max-h-25'
-          />
-          <h1 className='flex items-center gap-4'>
-            <Trophy className='mr-4 h-30 w-30 shrink-0 stroke-1' />
-            <span>
-              eBay 2025 Business Awards <br /> <strong>Start-Up Winner</strong>
-            </span>
-          </h1>
-          <p className='text-xl'>
-            TCGX was recognised by eBay in the 2025 Business Awards for
-            innovation in TCG e-commerce.
+          <p>
+            You control the prices and products your store accepts. Coverage
+            varies by game, product and source.
           </p>
+          <Link
+            href='/features/'
+            className='text-blue dark:text-blue-light inline-flex min-h-11 items-center font-semibold underline'
+          >
+            Explore buylist features
+          </Link>
         </div>
-      </div>
+      </section>
+      <DataSources />
+      <section
+        className='container grid w-full gap-8 px-4 py-12 sm:px-10 sm:py-16 lg:grid-cols-2 lg:items-center'
+        aria-labelledby='award-heading'
+      >
+        <picture className='block min-w-0'>
+          <source
+            type='image/webp'
+            srcSet='/assets/images/ebay-award-480.webp 480w, /assets/images/ebay-award-800.webp 800w'
+            sizes='(min-width: 1024px) 45vw, 90vw'
+          />
+          <Image
+            src='/assets/images/ebay-award-800.webp'
+            alt='TCGX’s eBay Start-Up Award trophy'
+            width={800}
+            height={800}
+            className='mx-auto h-auto w-full max-w-lg'
+          />
+        </picture>
+        <div className='min-w-0 space-y-5'>
+          <Trophy
+            aria-hidden='true'
+            className='text-blue dark:text-blue-light h-12 w-12'
+          />
+          <h2 id='award-heading'>Built by a trading card business</h2>
+          <p>
+            TCGX LTD won the Start-Up Award at the 2025 eBay for Business
+            Awards.
+          </p>
+          <p>
+            We bring experience of buying and selling trading cards to the tools
+            we build for stores and collectors.
+          </p>
+          <a
+            href={AWARD_URL}
+            className='text-blue dark:text-blue-light inline-flex min-h-11 items-center font-semibold underline'
+          >
+            See eBay’s winners announcement
+          </a>
+        </div>
+      </section>
+      <Banner />
     </main>
   )
 }

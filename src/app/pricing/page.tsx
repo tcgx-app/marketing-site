@@ -1,150 +1,186 @@
-import Link from 'next/link'
-import { twMerge } from 'tailwind-merge'
-
 import { buttonVariants } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
+import { cn } from '@/lib/utils'
+import { REGISTER_URL, STORE_SETUP_URL, STORES_URL } from '@/lib/site'
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger
 } from '@/components/ui/accordion'
-import { Banner } from '../_components/Banner'
 import { CharacterIllustration } from '../_components/CharacterIllustration'
+import CalendlyButton from '../_components/Calendly'
+import { Banner } from '../_components/Banner'
+
+const questions = [
+  [
+    'Do stores pay commission?',
+    'No. TCGX charges no commission on buylist transactions. Stores pay a flat monthly subscription, regardless of buylist volume.'
+  ],
+  ['Is VAT included?', 'Yes. The £25 monthly store subscription includes VAT.'],
+  [
+    'Do I need payment details for the trial?',
+    'Yes. Complete your subscription setup with payment details to start the 14-day trial. The subscription is £25/month including VAT after the trial unless you cancel.'
+  ],
+  [
+    'How do I get started?',
+    'Create a TCGX account or sign in, then complete the business subscription setup. If you register by email, verify your email address before continuing. You can then configure your store and buying rules.'
+  ],
+  [
+    'Can I cancel any time?',
+    'Yes. Cancel from your account settings. There are no long-term contracts or cancellation fees. Cancel before the trial ends to avoid the monthly subscription charge.'
+  ],
+  [
+    'Who pays players for their cards?',
+    'The participating store arranges payment directly with the player, under its own terms and after checking the submitted cards. TCGX does not process or guarantee those payments.'
+  ]
+]
 
 export default function Pricing() {
-  const appUrl = 'https://buylist.tcgx.co.uk'
   return (
-    <main className='flex h-full min-h-full grow flex-col flex-wrap items-center'>
-      <div className='container flex w-full flex-wrap gap-8 px-4 py-10 sm:px-10 sm:py-20'>
-        <div className='flex flex-col justify-center space-y-6 md:basis-[calc(50%-16px)]'>
-          <h1>Simple pricing for card stores</h1>
+    <main
+      id='main-content'
+      tabIndex={-1}
+      className='flex min-w-0 grow flex-col items-center'
+    >
+      <section
+        className='container grid w-full gap-8 px-4 py-10 sm:px-10 sm:py-16 lg:grid-cols-2 lg:items-center'
+        aria-labelledby='pricing-heading'
+      >
+        <div className='min-w-0 space-y-5'>
+          <p className='text-blue dark:text-blue-light text-sm font-semibold tracking-wide uppercase'>
+            Simple pricing for card stores
+          </p>
+          <h1 id='pricing-heading'>£25 a month. No buylist commission.</h1>
+          <p className='text-lg'>
+            Including VAT. Start with a 14-day free trial and run your store’s
+            buylist for one flat monthly price.
+          </p>
+          <div className='flex flex-col gap-3 sm:flex-row sm:flex-wrap'>
+            <a
+              href={STORE_SETUP_URL}
+              className={cn(
+                buttonVariants({ variant: 'blue', size: 'lg' }),
+                'min-h-11 text-center whitespace-normal hover:no-underline'
+              )}
+            >
+              Start 14-day free trial
+            </a>
+            <CalendlyButton />
+          </div>
+          <p className='text-muted-foreground text-sm'>
+            Payment details required. £25/month after the trial. Cancel before
+            it ends to avoid the charge.
+          </p>
           <p>
-            Players use TCGX for free. Stores pay a low monthly fee - No
-            commissions.
+            Players use TCGX for free.{' '}
+            <a
+              href={STORES_URL}
+              className='text-blue dark:text-blue-light font-semibold underline'
+            >
+              Browse store offers
+            </a>
+            .
           </p>
         </div>
-        <div className='w-full min-w-0 md:basis-[calc(50%-16px)]'>
-          <CharacterIllustration
-            character='pricing-pair'
-            className='block w-full'
-            sizes='(min-width: 1280px) 584px, (min-width: 768px) 50vw, calc(100vw - 32px)'
-            priority
-          />
-        </div>
-      </div>
-
-      <div className='bg-accent w-full'>
-        <div className='container flex flex-wrap gap-8 px-4 py-10 sm:px-10 sm:py-20'>
-          <div className='mb-4 flex basis-full flex-col items-center'>
-            <h1>Choose your plan</h1>
-            <p className='text-xl'>
-              TCGX connects players and card shops through smart buylists.
+        <CharacterIllustration
+          character='pricing-pair'
+          className='mx-auto block w-full max-w-xl min-w-0'
+          sizes='(min-width: 1024px) 48vw, calc(100vw - 32px)'
+          priority
+        />
+      </section>
+      <section className='bg-accent w-full' aria-labelledby='plans-heading'>
+        <div className='container grid gap-6 px-4 py-12 sm:px-10 sm:py-16 md:grid-cols-2'>
+          <div className='text-center md:col-span-2'>
+            <h2 id='plans-heading'>Choose your plan</h2>
+            <p>One store subscription. Free accounts for players.</p>
+          </div>
+          <article className='bg-background border-blue flex min-w-0 flex-col gap-6 rounded-xl border-2 p-6 sm:p-8'>
+            <h3 className='mb-0 text-xl'>For stores</h3>
+            <p className='text-4xl font-bold'>
+              £25<span className='text-lg font-normal'>/month</span>
             </p>
-          </div>
-          <div className='bg-background flex grow flex-col items-center gap-6 rounded-md p-8 md:basis-[calc(50%-16px)]'>
-            <Badge variant='outline-blue' className='w-fit'>
-              For Players
-            </Badge>
-            <h2 className='text-6xl'>FREE</h2>
-            <p className='text-xl'>Forever free for players</p>
-            <ul className='mx-auto w-fit space-y-4 text-left'>
-              <li className='list-disc'>Create buylists and send to stores</li>
-              <li className='list-disc'>Track offers and payouts</li>
-              <li className='list-disc'>Compare prices across stores</li>
-              <li className='list-disc'>Email notifications at every step</li>
+            <p>Including VAT. 14-day free trial.</p>
+            <ul className='list-disc space-y-3 pl-5'>
+              <li>Fixed and market-based buylist pricing</li>
+              <li>Daily market feeds from available sources</li>
+              <li>Condition settings and buying limits</li>
+              <li>Cash and store-credit buying rates</li>
+              <li>One dashboard for incoming submissions</li>
+              <li>Priority support</li>
             </ul>
-            <div className='flex w-full grow flex-col items-center justify-end'>
-              <Link
-                href={`${appUrl}/signin`}
-                className={twMerge(
-                  buttonVariants({ variant: 'outline-blue' }),
-                  'mb-7 cursor-pointer hover:no-underline'
-                )}
-              >
-                Create a free account
-              </Link>
-            </div>
-          </div>
-          <div className='bg-background drop-shadow-foreground/20 dark:drop-shadow-background/20 dark:border-blue-light border-blue flex grow flex-col items-center space-y-6 rounded-md border-2 p-8 text-center drop-shadow-xl md:basis-[calc(50%-16px)]'>
-            <Badge variant='blue' className='w-fit'>
-              For Stores
-            </Badge>
-            <h2 className='text-3xl'>
-              £<span className='text-6xl'>25</span>/month
-            </h2>
-            <p className='text-xl'>Inc. VAT. No hidden fees</p>
-            <ul className='mx-auto w-fit space-y-4 text-left'>
-              <li className='list-disc'>Rules-based buylist pricing</li>
-              <li className='list-disc'>
-                Live market pricing from CardMarket & TCGPlayer
-              </li>
-              <li className='list-disc'>
-                Central dashboard for all incoming buylists
-              </li>
-              <li className='list-disc'>Works across all major TCGs</li>
-              <li className='list-disc'>Priority support</li>
-            </ul>
-            <div className='flex w-full flex-col items-center gap-2'>
-              <Link
-                href={`${appUrl}/signin`}
-                className={twMerge(
-                  buttonVariants({ variant: 'blue' }),
-                  'cursor-pointer hover:no-underline'
+            <div className='mt-auto space-y-4'>
+              <a
+                href={STORE_SETUP_URL}
+                className={cn(
+                  buttonVariants({ variant: 'blue', size: 'lg' }),
+                  'min-h-11 w-full text-center whitespace-normal hover:no-underline'
                 )}
               >
                 Start 14-day free trial
-              </Link>
-              <p className='text-xs italic'>
-                *Cancel anytime. £25/month after trial
+              </a>
+              <p className='text-muted-foreground text-sm'>
+                Payment details required. Then £25/month including VAT. Cancel
+                any time.
               </p>
             </div>
-          </div>
+          </article>
+          <article className='bg-background flex min-w-0 flex-col gap-6 rounded-xl border p-6 sm:p-8'>
+            <h3 className='mb-0 text-xl'>For players</h3>
+            <p className='text-4xl font-bold'>Free</p>
+            <p>No TCGX subscription to sell your cards.</p>
+            <ul className='list-disc space-y-3 pl-5'>
+              <li>Browse participating stores without signing in</li>
+              <li>Search cards and view store offers</li>
+              <li>Create and submit buylists</li>
+              <li>Track your submissions</li>
+            </ul>
+            <p className='text-muted-foreground text-sm'>
+              Each store sets its own buying prices, payment options, condition
+              requirements and delivery terms.
+            </p>
+            <div className='mt-auto flex flex-col gap-3'>
+              <a
+                href={STORES_URL}
+                className={cn(
+                  buttonVariants({ variant: 'outline-blue', size: 'lg' }),
+                  'min-h-11 text-center whitespace-normal hover:no-underline'
+                )}
+              >
+                Browse stores and offers
+              </a>
+              <a
+                href={REGISTER_URL}
+                className='text-blue dark:text-blue-light inline-flex min-h-11 items-center justify-center font-semibold underline'
+              >
+                Create a free player account
+              </a>
+            </div>
+          </article>
         </div>
-      </div>
-
-      <div className='container flex w-full max-w-[1000px] flex-col items-center space-y-8 px-4 py-10 sm:px-10 sm:py-20 lg:space-y-15'>
-        <Accordion
-          type='single'
-          collapsible
-          defaultValue='item-1'
-          className='w-full space-y-4'
-        >
-          <AccordionItem value='item-1' className='[&>h3]:mb-2!'>
-            <AccordionTrigger>Do stores pay commission?</AccordionTrigger>
-            <AccordionContent className='text-base'>
-              No. TCGX does <strong>not</strong> charge commission on any
-              buylist transactions. Stores pay a single flat monthly fee,
-              regardless of volume.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value='item-2' className='[&>h3]:mb-2!'>
-            <AccordionTrigger>Is VAT included?</AccordionTrigger>
-            <AccordionContent className='text-base'>
-              Yes. The £25 monthly price <strong>includes VAT</strong>. There
-              are no additional fees or hidden charges.
-            </AccordionContent>
-          </AccordionItem>
-          <AccordionItem value='item-3' className='[&>h3]:mb-2!'>
-            <AccordionTrigger>Can I cancel any time?</AccordionTrigger>
-            <AccordionContent className='text-base'>
-              Yes. You can cancel your subscription at any time from your
-              account settings. There are no long-term contracts or cancellation
-              fees.
-            </AccordionContent>
-          </AccordionItem>
+      </section>
+      <section
+        className='container w-full max-w-4xl px-4 py-12 sm:px-10 sm:py-16'
+        aria-labelledby='pricing-questions'
+      >
+        <h2 id='pricing-questions'>Your pricing questions</h2>
+        <Accordion type='single' collapsible className='w-full'>
+          {questions.map(([question, answer], index) => (
+            <AccordionItem
+              key={question}
+              value={`question-${index}`}
+              className='[&>h3]:mb-0'
+            >
+              <AccordionTrigger className='min-h-14 text-left'>
+                {question}
+              </AccordionTrigger>
+              <AccordionContent className='text-base'>
+                {answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
         </Accordion>
-        <Link
-          href='/features'
-          className={twMerge(
-            buttonVariants({ variant: 'blue' }),
-            'min-w-[200px] cursor-pointer text-lg hover:no-underline'
-          )}
-        >
-          See all features
-        </Link>
-      </div>
-
+      </section>
       <Banner />
     </main>
   )
