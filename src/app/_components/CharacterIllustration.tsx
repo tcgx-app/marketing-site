@@ -42,7 +42,8 @@ export function CharacterIllustration({
         width={960}
         height={720}
         className='block h-auto w-full'
-        priority={priority}
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : 'auto'}
       />
     </picture>
   )
