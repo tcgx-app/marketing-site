@@ -4,6 +4,7 @@ import { useEffect, useRef } from 'react'
 
 interface AutoplayVideoProps {
   src: string
+  label: string
   className?: string
   width?: string
   height?: string
@@ -14,10 +15,11 @@ interface AutoplayVideoProps {
 
 export function AutoplayVideo({
   src,
+  label,
   className,
   width = '320',
   height = '240',
-  controls = false,
+  controls = true,
   muted = true,
   loop = true
 }: AutoplayVideoProps) {
@@ -26,19 +28,27 @@ export function AutoplayVideo({
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    let inView = false
+    const updatePlayback = () => {
+      if (
+        inView &&
+        !reducedMotion.matches &&
+        document.visibilityState === 'visible'
+      ) {
+        video.play().catch(() => {
+          // Playback controls remain available when a browser blocks autoplay.
+        })
+      } else {
+        video.pause()
+      }
+    }
 
     const observer = new IntersectionObserver(
       entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            // Video is in view, play it
-            video.play().catch(error => {
-              console.error('Error playing video:', error)
-            })
-          } else {
-            // Video is out of view, pause it
-            video.pause()
-          }
+          inView = entry.isIntersecting
+          updatePlayback()
         })
       },
       {
@@ -47,15 +57,20 @@ export function AutoplayVideo({
     )
 
     observer.observe(video)
+    reducedMotion.addEventListener('change', updatePlayback)
+    document.addEventListener('visibilitychange', updatePlayback)
 
     return () => {
       observer.disconnect()
+      reducedMotion.removeEventListener('change', updatePlayback)
+      document.removeEventListener('visibilitychange', updatePlayback)
     }
   }, [])
 
   return (
     <video
       ref={videoRef}
+      aria-label={label}
       width={width}
       height={height}
       controls={controls}

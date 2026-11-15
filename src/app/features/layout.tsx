@@ -1,13 +1,10 @@
-import { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
-  title: {
-    template: '%s | Features | TCGX',
-    default: 'Features'
-  },
-  description:
-    'Discover features that make it easy for anyone to sell their tTCG cards to stores. Connect, list, and manage your cards with tools built for sellers and retailers.'
-}
+export const metadata = pageMetadata(
+  'TCG buylist features: pricing rules and submissions | TCGX',
+  'Set buying rules, receive customer buylists, search your card catalogue and manage submissions with TCGX. Built for online, in-store and event buying.',
+  '/features/'
+)
 
 interface FeaturesLayoutProps {
   children: React.ReactNode

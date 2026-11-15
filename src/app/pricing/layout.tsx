@@ -1,13 +1,10 @@
-import { Metadata } from 'next'
+import { pageMetadata } from '@/lib/site'
 
-export const metadata: Metadata = {
-  title: {
-    template: '%s | Pricing | TCGX',
-    default: 'Pricing'
-  },
-  description:
-    'Discover TCGX pricing plans tailored to your business needs. Choose the perfect plan to elevate your digital presence with our expert services.'
-}
+export const metadata = pageMetadata(
+  'TCGX pricing | £25/month for stores, free for players',
+  'Try TCGX free for 14 days, then £25/month including VAT for stores. No buylist commission. Players can browse offers and create an account for free.',
+  '/pricing/'
+)
 
 interface PricingLayoutProps {
   children: React.ReactNode
