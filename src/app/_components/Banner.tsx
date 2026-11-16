@@ -6,13 +6,14 @@ export const Banner = () => (
     className='bg-blue w-full text-white'
     aria-labelledby='next-step-heading'
   >
-    <div className='container flex flex-col items-center justify-between gap-6 px-4 py-9 sm:px-10 md:flex-row md:gap-10'>
-      <div className='min-w-0 space-y-4 text-center md:text-left'>
+    <div className='container grid grid-cols-2 items-end gap-x-4 gap-y-6 px-4 py-10 sm:px-10 md:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)_minmax(0,1fr)] md:items-center'>
+      <div className='order-1 col-span-2 min-w-0 space-y-5 text-center md:order-2 md:col-span-1'>
         <h2 id='next-step-heading' className='mb-0 text-3xl'>
-          Put your buying rules to work.
+          Ready to build your store’s next buylist?
         </h2>
         <p>
-          14 days free. Then £25/month including VAT. No buylist commission.
+          Try TCGX free for 14 days. Then £25/month including VAT, with no
+          buylist commission.
         </p>
         <a
           href={STORE_SETUP_URL}
@@ -20,10 +21,6 @@ export const Banner = () => (
         >
           Start your free trial
         </a>
-        <p className='text-sm'>
-          Payment details required. Cancel before the trial ends to avoid the
-          charge.
-        </p>
         <p className='text-sm'>
           Here to sell cards?{' '}
           <a
@@ -35,9 +32,15 @@ export const Banner = () => (
         </p>
       </div>
       <CharacterIllustration
-        character='pricing-pair'
-        className='block w-40 shrink-0 md:w-64'
-        sizes='(min-width: 768px) 256px, 160px'
+        character='collector'
+        className='order-2 block w-full min-w-0 md:order-1'
+        sizes='(min-width: 1280px) 340px, (min-width: 768px) 28vw, 45vw'
+        decorative
+      />
+      <CharacterIllustration
+        character='store-owner'
+        className='order-3 block w-full min-w-0'
+        sizes='(min-width: 1280px) 340px, (min-width: 768px) 28vw, 45vw'
         decorative
       />
     </div>
