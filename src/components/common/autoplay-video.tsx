@@ -5,6 +5,7 @@ import { useEffect, useRef } from 'react'
 interface AutoplayVideoProps {
   src: string
   label: string
+  poster?: string
   className?: string
   width?: string
   height?: string
@@ -16,9 +17,10 @@ interface AutoplayVideoProps {
 export function AutoplayVideo({
   src,
   label,
+  poster,
   className,
-  width = '320',
-  height = '240',
+  width = '948',
+  height = '768',
   controls = true,
   muted = true,
   loop = true
@@ -74,6 +76,7 @@ export function AutoplayVideo({
       width={width}
       height={height}
       controls={controls}
+      poster={poster}
       preload='none'
       className={className}
       muted={muted}

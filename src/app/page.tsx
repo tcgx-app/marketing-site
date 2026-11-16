@@ -177,7 +177,8 @@ export default function Home() {
             </a>
           </div>
           <AutoplayVideo
-            src='https://tcgxstorageaccount.blob.core.windows.net/tcgx-ebay/buylist2.mp4'
+            src='/assets/videos/customer-buylist.mp4'
+            poster='/assets/videos/customer-buylist-poster.webp'
             label='Product demo: searching cards and building a buylist'
             className='h-auto w-full min-w-0 rounded-lg shadow-xl'
           />
@@ -189,7 +190,8 @@ export default function Home() {
         aria-labelledby='pricing-demo'
       >
         <AutoplayVideo
-          src='https://tcgxstorageaccount.blob.core.windows.net/tcgx-ebay/priceSettings.mp4'
+          src='/assets/videos/store-pricing.mp4'
+          poster='/assets/videos/store-pricing-poster.webp'
           label='Product demo: configuring store buying rules'
           className='order-2 h-auto w-full min-w-0 rounded-lg shadow-xl lg:order-1'
         />
