@@ -13,6 +13,14 @@ import { Banner } from '../_components/Banner'
 
 const questions = [
   [
+    'What does one subscription cover?',
+    'Your subscription sets up one TCGX store account. Contact contact@tcgx.co.uk to confirm arrangements for staff access or multiple locations before subscribing.'
+  ],
+  [
+    'Which exports are included?',
+    'Cardmarket CSV, Whatnot CSV and a general CSV export are available. Product support and required marketplace identifiers vary by destination. Review exported data before making listings live.'
+  ],
+  [
     'Do stores pay commission?',
     'No. TCGX charges no commission on buylist transactions. Stores pay a flat monthly subscription, regardless of buylist volume.'
   ],
@@ -52,8 +60,8 @@ export default function Pricing() {
           </p>
           <h1 id='pricing-heading'>£25 a month. No buylist commission.</h1>
           <p className='text-lg'>
-            Including VAT. Start with a 14-day free trial and run your store’s
-            buylist for one flat monthly price.
+            Including VAT, for one TCGX store account. Start with a 14-day free
+            trial and run your buylist for one flat monthly price.
           </p>
           <div className='flex flex-col gap-3 sm:flex-row sm:flex-wrap'>
             <a
@@ -82,81 +90,86 @@ export default function Pricing() {
             .
           </p>
         </div>
-        <CharacterIllustration
-          character='pricing-pair'
-          className='mx-auto block w-full max-w-xl min-w-0'
-          sizes='(min-width: 1024px) 48vw, calc(100vw - 32px)'
-          priority
-        />
+        <aside
+          id='plans-heading'
+          className='bg-accent border-border min-w-0 scroll-mt-8 rounded-2xl border p-6 sm:p-8'
+          aria-labelledby='store-plan-heading'
+        >
+          <p className='text-blue dark:text-blue-light mb-3 text-sm font-semibold'>
+            THE STORE SUBSCRIPTION
+          </p>
+          <h2 id='store-plan-heading' className='mb-2 text-4xl'>
+            £25<span className='text-lg font-normal'> / month</span>
+          </h2>
+          <p className='text-muted-foreground mb-6 text-sm'>
+            Including VAT · 14-day free trial
+          </p>
+          <h3 className='text-lg'>Included with your store account</h3>
+          <ul className='list-disc space-y-3 pl-5'>
+            <li>Fixed offers and market-based buying rates</li>
+            <li>Daily feeds from your available price sources</li>
+            <li>
+              Condition settings, quantity limits, cash and store-credit offers
+            </li>
+            <li>Online customer buylists and a submission dashboard</li>
+            <li>Cardmarket CSV, Whatnot CSV and general CSV exports</li>
+            <li>Support from the TCGX team</li>
+          </ul>
+          <a
+            href='/features/#compatibility'
+            className='text-blue dark:text-blue-light mt-4 inline-flex min-h-11 items-center text-sm font-semibold underline'
+          >
+            Check price-source and export compatibility
+          </a>
+          <p className='text-muted-foreground mt-3 text-sm'>
+            For staff access or multiple locations,{' '}
+            <a
+              href='mailto:contact@tcgx.co.uk?subject=TCGX%20store%20subscription'
+              className='font-semibold underline'
+            >
+              confirm your setup with us
+            </a>{' '}
+            before subscribing.
+          </p>
+        </aside>
       </section>
-      <section className='bg-accent w-full' aria-labelledby='plans-heading'>
-        <div className='container grid gap-6 px-4 py-12 sm:px-10 sm:py-16 md:grid-cols-2'>
-          <div className='text-center md:col-span-2'>
-            <h2 id='plans-heading'>Choose your plan</h2>
-            <p>One store subscription. Free accounts for players.</p>
+      <section
+        className='border-border w-full border-y'
+        aria-labelledby='player-access-heading'
+      >
+        <div className='container flex flex-col items-start gap-5 px-4 py-8 sm:flex-row sm:items-center sm:px-10'>
+          <CharacterIllustration
+            character='pricing-pair'
+            className='block w-28 shrink-0 sm:w-40'
+            sizes='(min-width: 640px) 160px, 112px'
+            decorative
+          />
+          <div className='min-w-0 grow'>
+            <h2 id='player-access-heading' className='mb-2 text-2xl'>
+              Selling your cards? Player accounts are free.
+            </h2>
+            <p>
+              Browse stores and offers without signing in. Create a free account
+              when you are ready to submit a buylist.
+            </p>
           </div>
-          <article className='bg-background border-blue flex min-w-0 flex-col gap-6 rounded-xl border-2 p-6 sm:p-8'>
-            <h3 className='mb-0 text-xl'>For stores</h3>
-            <p className='text-4xl font-bold'>
-              £25<span className='text-lg font-normal'>/month</span>
-            </p>
-            <p>Including VAT. 14-day free trial.</p>
-            <ul className='list-disc space-y-3 pl-5'>
-              <li>Fixed and market-based buylist pricing</li>
-              <li>Daily market feeds from available sources</li>
-              <li>Condition settings and buying limits</li>
-              <li>Cash and store-credit buying rates</li>
-              <li>One dashboard for incoming submissions</li>
-              <li>Priority support</li>
-            </ul>
-            <div className='mt-auto space-y-4'>
-              <a
-                href={STORE_SETUP_URL}
-                className={cn(
-                  buttonVariants({ variant: 'blue', size: 'lg' }),
-                  'min-h-11 w-full text-center whitespace-normal hover:no-underline'
-                )}
-              >
-                Start 14-day free trial
-              </a>
-              <p className='text-muted-foreground text-sm'>
-                Payment details required. Then £25/month including VAT. Cancel
-                any time.
-              </p>
-            </div>
-          </article>
-          <article className='bg-background flex min-w-0 flex-col gap-6 rounded-xl border p-6 sm:p-8'>
-            <h3 className='mb-0 text-xl'>For players</h3>
-            <p className='text-4xl font-bold'>Free</p>
-            <p>No TCGX subscription to sell your cards.</p>
-            <ul className='list-disc space-y-3 pl-5'>
-              <li>Browse participating stores without signing in</li>
-              <li>Search cards and view store offers</li>
-              <li>Create and submit buylists</li>
-              <li>Track your submissions</li>
-            </ul>
-            <p className='text-muted-foreground text-sm'>
-              Each store sets its own buying prices, payment options, condition
-              requirements and delivery terms.
-            </p>
-            <div className='mt-auto flex flex-col gap-3'>
-              <a
-                href={STORES_URL}
-                className={cn(
-                  buttonVariants({ variant: 'outline-blue', size: 'lg' }),
-                  'min-h-11 text-center whitespace-normal hover:no-underline'
-                )}
-              >
-                Browse stores and offers
-              </a>
-              <a
-                href={REGISTER_URL}
-                className='text-blue dark:text-blue-light inline-flex min-h-11 items-center justify-center font-semibold underline'
-              >
-                Create a free player account
-              </a>
-            </div>
-          </article>
+          <div className='flex shrink-0 flex-col items-start gap-1'>
+            <a
+              href={STORES_URL}
+              className={cn(
+                buttonVariants({ variant: 'outline-blue' }),
+                'min-h-11 hover:no-underline'
+              )}
+            >
+              Browse stores and offers
+            </a>
+            <a
+              href={REGISTER_URL}
+              className='text-blue dark:text-blue-light inline-flex min-h-11 items-center text-sm font-semibold underline'
+            >
+              Create a free player account
+            </a>
+          </div>
         </div>
       </section>
       <section
